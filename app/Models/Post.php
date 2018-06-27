@@ -12,6 +12,10 @@ class Post extends Model
         return $this->hasOne('App\Models\Category');
     }
 
+    public function author() {
+        return $this->hasOne('App\Models\Author');
+    }
+
     public function tags() {
         return $this->belongsToMany('App\Models\Tag', 'tags_posts');
     }
