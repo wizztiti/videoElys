@@ -14,13 +14,13 @@ class CreateVideosUsersTable extends Migration
     public function up()
     {
         Schema::create('videos_users', function (Blueprint $table) {
-            $table->unsignedInteger('users_id');
-            $table->unsignedInteger('videos_id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('video_id');
 
-            $table->foreign('users_id')->references('id')->on('users');
-            $table->foreign('videos_id')->references('id')->on('videos');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('video_id')->references('id')->on('videos');
 
-            $table->primary(['users_id', 'videos_id']);
+            $table->primary(['user_id', 'video_id']);
         });
     }
 

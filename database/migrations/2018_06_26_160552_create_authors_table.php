@@ -14,10 +14,10 @@ class CreateAuthorsTable extends Migration
     public function up()
     {
         Schema::create('authors', function (Blueprint $table) {
-            $table->unsignedInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users');
-
-            $table->primary('users_id');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->longText('description')->nullable();
+            $table->primary('user_id');
         });
     }
 
