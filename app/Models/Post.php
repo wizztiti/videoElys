@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'text'];
+    protected $fillable = ['title', 'text', 'category_id'];
 
-    public function categorie() {
-        return $this->hasOne('App\Models\Category');
+    public function category() {
+        return $this->belongsTo('App\Models\Category');
     }
 
     public function author() {
