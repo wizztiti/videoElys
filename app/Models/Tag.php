@@ -9,10 +9,10 @@ class Tag extends Model
     protected $fillable = ['name'];
 
     public function posts() {
-        return $this->belongsToMany('App\Models\Post', 'tags_posts');
+        return $this->belongsToMany('App\Models\Post');
     }
 
     public function videos() {
-        return $this->belongsToMany('App\Models\Video', 'tags_videos');
+        return $this->belongsToMany('App\Models\Video');
     }
 }

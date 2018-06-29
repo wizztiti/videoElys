@@ -9,7 +9,7 @@ class Video extends Model
     protected $fillable = ['title', 'description', 'duration', 'teaser_file', 'video_file'];
 
     public function tags() {
-        return $this->belongsToMany('App\Models\Tag', 'tags_videos');
+        return $this->belongsToMany('App\Models\Tag',);
     }
 
     public function users() {
