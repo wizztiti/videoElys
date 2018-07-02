@@ -17,7 +17,7 @@ class CreateVideosTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('description');
-            $table->time('duration');
+            $table->unsignedSmallInteger('duration');
             $table->string('teaser_file')->unique();
             $table->string('video_file')->unique();
             $table->timestamps();
