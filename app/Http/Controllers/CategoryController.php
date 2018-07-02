@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
+
 
 class CategoryController extends Controller
 {
@@ -25,7 +26,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create');
+        $category = new Category();
+        return view('category.create', compact('category'));
     }
 
     /**
@@ -34,9 +36,10 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        Category::create($request->only('name', 'slug'));
+        return redirect(action('CategoryController@index'))->with('success', 'La catégorie a bien été créée');
     }
 
     /**
@@ -58,8 +61,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $categories = Category::findOrFail($id);
-        return view('category.edit', compact('categories'));
+        $category = Category::findOrFail($id);
+        return view('category.edit', compact('category'));
     }
 
     /**
@@ -69,9 +72,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->update($request->only('name', 'slug'));
+        return redirect(action('CategoryController@index'))->with('success', 'La catégorie a bien été modifiée');
     }
 
     /**

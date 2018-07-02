@@ -1,8 +1,8 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1>Ajouter une catégorie</h1>
+    <h4>Ajouter une nouvelle catégorie</h4>
 
-    @include('category.form')
+    @include('category.form', ['action' => "store"])
 
 @endsection

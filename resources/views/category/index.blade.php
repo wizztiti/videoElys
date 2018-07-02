@@ -25,7 +25,7 @@
                     <td>{{ $category->slug }}</td>
                     <td>
                         <a href="{{ action('CategoryController@edit', $category) }}" class="btn btn-primary">Editer</a>
-                        <a href="{{ action('CategoryController@destroy', $category) }}" class="btn btn-primary">Supprimer</a>
+                        <a href="{{ action('CategoryController@destroy', $category) }}" class="btn btn-danger">Supprimer</a>
                     </td>
                 </tr>
             @endforeach
