@@ -25,7 +25,11 @@
                     <td>{{ $category->slug }}</td>
                     <td>
                         <a href="{{ action('CategoryController@edit', $category) }}" class="btn btn-primary">Editer</a>
-                        <a href="{{ action('CategoryController@destroy', $category) }}" class="btn btn-danger">Supprimer</a>
+                        <form action="{{ route('category.destroy', $category) }}" method="POST">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <input type="submit" value="Supprimer" class="btn btn-danger">
+                        </form>
                     </td>
                 </tr>
             @endforeach
