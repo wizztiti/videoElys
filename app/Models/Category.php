@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Behaviours\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
@@ -12,14 +13,5 @@ class Category extends Model
         return $this->hasMany('App\Models\Post');
     }
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function($category) {
-            if(empty($category->slug)) {
-                $category->slug = str_slug($category->name);
-            }
-        });
-    }
+    use Sluggable;
 }

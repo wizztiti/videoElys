@@ -21,9 +21,9 @@ class ModelCategoryTest extends TestCase
      */
     public function nombre_de_categories()
     {
-        $categorie1 = Category::create(['name' => 'catégorie 1',]);
-        $categorie2 = Category::create(['name' => 'catégorie 2',]);
-        $categorie3 = Category::create(['name' => 'catégorie 3',]);
+        $categorie1 = Category::create(['name' => 'catégorie 1', 'slug' => 'categorie-1']);
+        $categorie2 = Category::create(['name' => 'catégorie 2', 'slug' => 'categorie-2']);
+        $categorie3 = Category::create(['name' => 'catégorie 3', 'slug' => 'categorie-3']);
 
         $this->assertEquals(3, Category::count());
         $this->assertEquals('catégorie 2', $categorie2->name);
@@ -36,8 +36,8 @@ class ModelCategoryTest extends TestCase
      * @test
      */
     public function liaison_posts_categories() {
-        $categorie1 = Category::create(['name' => 'catégorie 1',]);
-        $categorie2 = Category::create(['name' => 'catégorie 2',]);
+        $categorie1 = Category::create(['name' => 'catégorie 1', 'slug' => 'categorie-1']);
+        $categorie2 = Category::create(['name' => 'catégorie 2', 'slug' => 'categorie-2']);
 
         $post = Post::create([
             'title' => 'un titre',

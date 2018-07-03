@@ -37,8 +37,8 @@ class ModelTagTest extends TestCase
         $tag2 = Tag::create(['name' => 'tag 2']);
         $tag3 = Tag::create(['name' => 'tag 3']);
 
-        $categorie1 = Category::create(['name' => 'catégorie 1']);
-        $categorie2 = Category::create(['name' => 'catégorie 2']);
+        $categorie1 = Category::create(['name' => 'catégorie 1', 'slug' => 'categorie-1']);
+        $categorie2 = Category::create(['name' => 'catégorie 2', 'slug' => 'categorie-2']);
 
         $post1 = Post::create([
             'title' => 'titre de l\'article numéro 1',

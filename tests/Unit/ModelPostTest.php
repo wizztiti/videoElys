@@ -20,8 +20,8 @@ class ModelPostTest extends TestCase
      */
     public function nombre_de_Posts()
     {
-        $categorie1 = Category::create(['name' => 'catégorie 1',]);
-        $categorie2 = Category::create(['name' => 'catégorie 2',]);
+        $categorie1 = Category::create(['name' => 'catégorie 1', 'slug' => 'categorie-1']);
+        $categorie2 = Category::create(['name' => 'catégorie 2', 'slug' => 'categorie-2']);
 
         $post1 = Post::create([
             'title' => 'titre de l\'article numéro 1',
@@ -47,8 +47,8 @@ class ModelPostTest extends TestCase
      * @test
      */
     public function liaison_posts_categories() {
-        $categorie1 = Category::create(['name' => 'catégorie 1',]);
-        $categorie2 = Category::create(['name' => 'catégorie 2',]);
+        $categorie1 = Category::create(['name' => 'catégorie 1', 'slug' => 'categorie-1']);
+        $categorie2 = Category::create(['name' => 'catégorie 2', 'slug' => 'categorie-2']);
 
         $post1 = Post::create([
             'title' => 'titre de l\'article numéro 1',
