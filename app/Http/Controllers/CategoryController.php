@@ -59,9 +59,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $category = Category::findOrFail($id);
         return view('category.edit', compact('category'));
     }
 
@@ -72,9 +71,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(CategoryRequest $request, Category $category)
     {
-        $category = Category::findOrFail($id);
         $category->update($request->only('name', 'slug'));
         return redirect(action('CategoryController@index'))->with('success', 'La catégorie a bien été modifiée');
     }
@@ -85,9 +83,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $category = Category::findOrfail($id);
         $category->delete();
         return redirect((action('CategoryController@index')));
     }
