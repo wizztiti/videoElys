@@ -11,11 +11,8 @@ namespace App\Behaviours;
 
 trait Sluggable
 {
-    public function setSlugAttribute($slug) {
-        if(empty($slug)){
-            $this->attributes['slug'] = str_slug($this->name);
-        } else {
-            $this->attributes['slug'] = $slug;
-        }
+    public function setSlugAttribute($slug)
+    {
+        $this->attributes['slug'] = empty($slug) ? str_slug($this->name) : $slug;
     }
 }

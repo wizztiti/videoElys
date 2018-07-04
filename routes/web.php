@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('index');
 });
 
+
 Route::resource('category', 'CategoryController');

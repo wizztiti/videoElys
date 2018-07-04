@@ -1,20 +1,43 @@
-{!! Form::model($category, [
-    'url' => action("CategoryController@$action", $category),
-    'method' => $action == 'store' ? 'POST': 'PUT'
-]) !!}
+@extends('layouts.default')
 
-    <div class="form-group">
-        <label class="control-label" for="name">Nom de la catégorie</label>
-        {!! Form::text('name', null, ['class' => 'form-control']) !!}
-    </div>
-    <div class="form-group">
-        <label class="control-label" for="name">Slug</label>
-        {!! Form::text('slug', null, ['class' => 'form-control']) !!}
+@section('content')
 
-    </div>
+    @if(isset($category))
+        <h1>Edition de la catégorie</h1>
+    @else
+        <h1>Nouvelle catégorie</h1>
+    @endif
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Sauvegarder</button>
-    </div>
+    {!!
+        Form::open([
+            'url' => isset($category)
+                ? route('category.update', $category)
+                : route('category.store'),
+            'method' => 'POST'
+        ])
+    !!}
 
-{!! Form::close() !!}
+        @if(isset($category))
+            {!! Form::hidden('_method', 'PUT') !!}
+        @endif
+
+        <div class="form-group">
+            <label class="control-label" for="name">Nom de la catégorie</label>
+            {!!
+                Form::text('name', isset($category) ? $category->name : null, ['class' => 'form-control'])
+            !!}
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="name">Slug</label>
+            {!!
+                Form::text('slug', isset($category) ? $category->slug : null, ['class' => 'form-control'])
+            !!}
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+        </div>
+
+    {!! Form::close() !!}
+@endsection
