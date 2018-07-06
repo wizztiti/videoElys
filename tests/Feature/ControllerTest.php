@@ -57,6 +57,25 @@ class ControllerTest extends TestCase
     }
 
     /**
+     * Vérifie que la création d'une catégorie déjà existante retourne une erreur
+     *
+     * @return void
+     */
+    public function test_Admin_CategoryController_Store_Error()
+    {
+        $request = CategoryRequest::create('/category.store', 'POST',[
+            'name'     =>     'cat1',
+            'slug'     =>     '',
+        ]);
+        $controller = new CategoryController();
+
+        $response = $controller->store($request);
+        $this->assertEquals(302, $response->getStatusCode());
+        $this->assertNotEquals('success', session()->get('notification.type'));
+    }
+
+
+    /**
      * Vérifie que la demande d'édition d'une catégorie est ok
      *
      * @depends test_Admin_CategoryController_Store
@@ -77,7 +96,6 @@ class ControllerTest extends TestCase
     public function test_Admin_CategoryController_Update()
     {
         $category = Category::where('name', 'cat1')->first();
-        $category_id = $category->id;
         $request = CategoryRequest::create('/category.update', 'PUT',[
             'name'     =>     'cat2',
             'slug'     =>     'cat2',
@@ -87,8 +105,33 @@ class ControllerTest extends TestCase
         $response = $controller->update($request, $category);
 
         $this->assertEquals(302, $response->getStatusCode());
-        $category = Category::where('id', $category_id)->first();
         $this->assertEquals('cat2', $category->name);
+    }
+
+    /**
+     * Vérifie que la modification d'une catégorie avec des données déjà existante retourne une erreur
+     *
+     * @return void
+     */
+    public function test_Admin_CategoryController_Update_Error()
+    {
+        $request = CategoryRequest::create('/category.store', 'POST',[
+            'name'     =>     'cat1',
+            'slug'     =>     '',
+        ]);
+        $controller = new CategoryController();
+        $controller->store($request);
+
+        $category = Category::where('name', 'cat2')->first();
+        $request = CategoryRequest::create('/category.update', 'PUT',[
+            'name'     =>     'cat1',
+            'slug'     =>     'cat1',
+        ]);
+        $controller = new CategoryController();
+        $response = $controller->update($request, $category);
+
+        $this->assertEquals(302, $response->getStatusCode());
+        $this->assertEquals('warning', session()->get('notification.type'));
     }
 
     /**

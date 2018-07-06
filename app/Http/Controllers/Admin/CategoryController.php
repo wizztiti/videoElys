@@ -89,9 +89,21 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, Category $category)
     {
-        $category->update($request->only('name', 'slug'));
+        $message = 'Problème lors de la modification de la catégorie'   ;
 
-        return redirect(route('category.index'))->with('success', 'La catégorie a bien été modifiée');
+        try {
+            $category->update($request->only('name', 'slug'));
+
+            if($category) {
+                flash('La catégorie a bien été modifiée', 'success');
+                return redirect(route('category.index'));
+            }
+        } catch(\Exception $ex) {
+            flash($message, 'warning');
+            $error = $ex->getMessage();
+        }
+        flash($message, 'warning');
+        return redirect(route('category.index'));
     }
 
     /**
