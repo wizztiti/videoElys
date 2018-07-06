@@ -38,19 +38,21 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $error = 'La catégorie ne s\'est pas créé';
+        $message = 'Problème lors de la création de la catégorie'   ;
 
         try {
-            Category::create($request->only('name', 'slug'));
+            $category = Category::create($request->only('name', 'slug'));
 
             if($category) {
-                return redirect(route('category.edit', $category))->with('success', 'La catégorie a bien été créée');
+                flash('La catégorie a bien été créée');
+                return redirect(route('category.edit', $category));
             }
         } catch(\Exception $ex) {
+            flash($message, 'warning');
             $error = $ex->getMessage();
         }
-
-        return redirect(route('category.index'))->with('error', $error);
+        flash($message, 'warning');
+        return redirect(route('category.index'));
     }
 
 

@@ -13,6 +13,11 @@
 </head>
 <body>
     <div class="container">
+        @if(session()->has('notification'))
+            <div class="alert alert-{{ session()->get('notification.type') }}">
+                {{ session()->get('notification.message') }}
+            </div>
+        @endif
         @yield('content')
     </div>
 
