@@ -15,5 +15,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-
-Route::resource('category', 'CategoryController');
+Route::prefix('admin')->group(function () {
+    Route::resource('category', 'Admin\CategoryController');
+});

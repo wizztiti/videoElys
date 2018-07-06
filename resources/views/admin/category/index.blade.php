@@ -5,7 +5,7 @@
     <H1>Gestion des catégories</H1>
 
     <p class="text-right">
-        <a href="{{ action('CategoryController@create') }}" class="btn btn-primary">Ajouter une catégorie</a>
+        <a href="{{ action('Admin\CategoryController@create') }}" class="btn btn-primary">Ajouter une catégorie</a>
     </p>
 
     <table class="table table-striped">
@@ -24,7 +24,7 @@
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->slug }}</td>
                     <td>
-                        <a href="{{ action('CategoryController@edit', $category) }}" class="btn btn-primary">Editer</a>
+                        <a href="{{ action('Admin\CategoryController@edit', $category) }}" class="btn btn-primary">Editer</a>
                         <form action="{{ route('category.destroy', $category) }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 
@@ -14,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.index', [
+        return view('admin.category.index', [
             'categories' => Category::all()
         ]);
     }
@@ -26,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.form');
+        return view('admin/category.form');
     }
 
     /**
@@ -72,7 +73,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('category.form', [
+        return view('admin/category.form', [
             'category' => $category
         ]);
     }
