@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Behaviours\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
@@ -13,5 +12,8 @@ class Category extends Model
         return $this->hasMany('App\Models\Post');
     }
 
-    use Sluggable;
+    public function setSlugAttribute($slug)
+    {
+        $this->attributes['slug'] = empty($slug) ? str_slug($this->name) : $slug;
+    }
 }
