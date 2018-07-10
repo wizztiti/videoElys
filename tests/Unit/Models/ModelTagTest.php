@@ -43,16 +43,19 @@ class ModelTagTest extends TestCase
         $post1 = Post::create([
             'title' => 'titre de l\'article numéro 1',
             'text' => 'un text tres long de l\'article numéro 1',
+            'slug' => 'article-1',
             'category_id' => $categorie1->id,
         ]);
         $post2 = Post::create([
             'title' => 'titre de l\'article numéro 2',
             'text' => 'un text tres long de l\'article numéro 2',
+            'slug' => 'article-2',
             'category_id' => $categorie1->id,
         ]);
         $post3 = Post::create([
             'title' => 'titre de l\'article numéro 3',
             'text' => 'un text tres long de l\'article numéro 3',
+            'slug' => 'article-3',
             'category_id' => $categorie2->id,
         ]);
 

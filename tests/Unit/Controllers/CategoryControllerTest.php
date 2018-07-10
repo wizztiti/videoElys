@@ -5,9 +5,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ControllerTest extends TestCase
+class CategoryControllerTest extends TestCase
 {
     /**
      * Vérifie que l'action INDEX retourne bien une vue

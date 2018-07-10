@@ -1,13 +1,15 @@
 <?php
 
+
 namespace App\Http\Controllers\Admin;
 
+
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryRequest;
-use App\Models\Category;
+use App\Http\Requests\PostRequest;
+use App\Models\Post;
 use Illuminate\Support\Facades\Log;
 
-class CategoryController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +18,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index', [
-            'categories' => Category::all()
+        return view('admin.post.index', [
+            'posts' => Post::all()->load('category'),
         ]);
     }
 
@@ -28,34 +30,33 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin/category.form');
+        return view('admin.post.form');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  PostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(PostRequest $request)
     {
-        $message = 'Problème lors de la création de la catégorie'   ;
+        $message = 'Problème lors de la création de l\'article'   ;
 
         try {
-            $category = Category::create($request->only('name', 'slug'));
+            $post = Post::create($request->only('title', 'text', 'slug', 'category_id'));
 
-            if($category) {
-                flash('La catégorie a bien été créée');
-                return redirect(route('category.edit', $category));
+            if($post) {
+                flash('L\'article a bien été créé');
+                return redirect(route('post.index', $post));
             }
         } catch(\Exception $exception) {
             flash($message, 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
         flash($message, 'warning');
-        return redirect(route('category.index'));
+        return redirect(route('post.index'));
     }
-
 
     /**
      * Display the specified resource.
@@ -71,13 +72,13 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Post $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Post $post)
     {
-        return view('admin/category.form', [
-            'category' => $category
+        return view('admin/post.form', [
+            'post' => $post
         ]);
     }
 
@@ -85,49 +86,49 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, Category $category)
+    public function update(PostRequest $request, Post $post)
     {
-        $message = 'Problème lors de la modification de la catégorie';
+        $message = 'Problème lors de la modification de l\'article'   ;
 
         try {
-            $category->update($request->only('name', 'slug'));
+            $post->update($request->only('title', 'text', 'slug', 'category_id'));
 
-            if($category) {
-                flash('La catégorie a bien été modifiée', 'success');
-                return redirect(route('category.index'));
+            if($post) {
+                flash('L\'article a bien été modifié', 'success');
+                return redirect(route('post.index'));
             }
         } catch(\Exception $exception) {
             flash($message, 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
         flash($message, 'warning');
-        return redirect(route('category.index'));
+        return redirect(route('post.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Post $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Post $post)
     {
-        $message = 'Problème lors de la suppression de la catégorie';
+        $message = 'Problème lors de la suppression de l\'article';
 
         try {
-            $category->delete();
-            if($category) {
-                flash('La catégorie a bien été supprimée', 'success');
-                return redirect(route('category.index'));
+            $post->delete();
+            if($post) {
+                flash('L\'article a bien été supprimé', 'success');
+                return redirect(route('post.index'));
             }
         } catch(\Exception $exception) {
             flash($message, 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
         flash($message, 'warning');
-        return redirect(route('category.index'));
+        return redirect(route('post.index'));
     }
 }

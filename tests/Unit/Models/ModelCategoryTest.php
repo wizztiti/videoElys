@@ -42,6 +42,7 @@ class ModelCategoryTest extends TestCase
         $post = Post::create([
             'title' => 'un titre',
             'text' => 'encore du texte article bidon',
+            'slug' => 'un-titre',
             'category_id' => $categorie2->id
         ]);
 
@@ -58,13 +59,15 @@ class ModelCategoryTest extends TestCase
 
         // Test Liaison category->posts
         Post::create([
-            'title' => 'un titre',
+            'title' => 'un second titre',
             'text' => 'encore du texte article bidon',
+            'slug' => 'un-second-titre',
             'category_id' => $categorie2->id
         ]);
         Post::create([
-            'title' => 'un titre',
+            'title' => 'un troisième titre',
             'text' => 'encore du texte article bidon',
+            'slug' => 'un-troisieme-titre',
             'category_id' => $categorie2->id
         ]);
         $this->assertEquals(3, $categorie2->posts()->count());

@@ -18,3 +18,6 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
     Route::resource('category', 'Admin\CategoryController');
 });
+Route::prefix('admin')->group(function () {
+    Route::resource('post', 'Admin\PostController');
+});
