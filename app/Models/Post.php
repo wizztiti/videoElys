@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use App\Behaviours\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    use Sluggable;
+
     protected $fillable = ['title', 'text', 'category_id', 'slug'];
+    protected $sluggable = 'title';
 
     public function category() {
         return $this->belongsTo('App\Models\Category');
@@ -18,10 +22,5 @@ class Post extends Model
 
     public function tags() {
         return $this->belongsToMany('App\Models\Tag');
-    }
-
-    public function setSlugAttribute($slug)
-    {
-        $this->attributes['slug'] = empty($slug) ? str_slug($this->title) : $slug;
     }
 }

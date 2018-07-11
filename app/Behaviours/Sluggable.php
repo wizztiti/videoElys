@@ -13,6 +13,6 @@ trait Sluggable
 {
     public function setSlugAttribute($slug)
     {
-        $this->attributes['slug'] = empty($slug) ? str_slug($this->name) : $slug;
+        $this->attributes['slug'] = empty($slug) ? str_slug($this->getAttribute($this->sluggable)) : $slug;
     }
 }
