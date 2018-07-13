@@ -21,3 +21,6 @@ Route::prefix('admin')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::resource('post', 'Admin\PostController');
 });
+Route::prefix('admin')->group(function () {
+    Route::resource('video', 'Admin\VideoController');
+});

@@ -21,32 +21,35 @@
         {!! Form::hidden('_method', 'PUT') !!}
     @endif
 
-    <div class="form-group">
-        <label class="control-label" for="name">Titre de l'article</label>
+    <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
+        <label class="control-label" for="title">Titre de l'article</label>
         {!!
             Form::text('title', isset($post) ? $post->title : null, ['class' => 'form-control'])
         !!}
+        {!! $errors->first('title', '<span class="help-block">:message</span>') !!}
     </div>
 
     <div class="form-group">
-        <label class="control-label" for="name">Slug</label>
+        <label class="control-label" for="slug">Slug</label>
         {!!
             Form::text('slug', isset($post) ? $post->slug : null, ['class' => 'form-control'])
         !!}
     </div>
 
-    <div class="form-group">
-        <label class="control-label" for="name">Texte</label>
+    <div class="form-group {{ $errors->has('text') ? 'has-error' : '' }}">
+        <label class="control-label" for="text">Texte</label>
         {!!
             Form::textarea('text', isset($post) ? $post->text : null, ['class' => 'form-control'])
         !!}
+        {!! $errors->first('text', '<span class="help-block">:message</span>') !!}
     </div>
 
-    <div class="form-group">
-        <label class="control-label" for="name">Catégorie</label>
+    <div class="form-group {{ $errors->has('category_id') ? 'has-error' : '' }}">
+        <label class="control-label" for="category_id">Catégorie</label>
         {!!
             Form::select('category_id', \App\Models\Category::all()->pluck('name', 'id'), null,  ['class' => 'form-control'] )
         !!}
+        {!! $errors->first('category_id', '<span class="help-block">:message</span>') !!}
     </div>
 
     <div class="form-group">

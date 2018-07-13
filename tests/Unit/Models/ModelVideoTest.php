@@ -24,9 +24,10 @@ class ModelVideoTest extends TestCase
 
         $video1 = Video::create([
             'title' => "titre de la 1ere vidéo",
+            'slug' => 'titre-de-la-1ere-video',
             'description' => 'description de la première vidéo',
             'duration' => 3600,
-            'teaser_file' => 'teaser-video_01.mpg',
+            'teaser_url' => 'teaser-video_01.mpg',
             'video_file' => 'video_01.mpg',
         ]);
 
@@ -44,9 +45,10 @@ class ModelVideoTest extends TestCase
 
         $video1 = Video::create([
             'title' => "titre de la 1ere vidéo",
+            'slug' => 'titre-de-la-1ere-video',
             'description' => 'description de la première vidéo',
             'duration' => 3600,
-            'teaser_file' => 'teaser-video_02.mpg',
+            'teaser_url' => 'teaser-video_02.mpg',
             'video_file' => 'video_02.mpg',
         ]);
 
@@ -73,9 +75,10 @@ class ModelVideoTest extends TestCase
         $tag2 = Tag::create(['name' => 'tag 2']);
         $video1 = Video::create([
             'title' => "titre de la 1ere vidéo",
+            'slug' => 'titre-de-la-1ere-video',
             'description' => 'description de la première vidéo',
             'duration' => 3600,
-            'teaser_file' => 'teaser-video_02.mpg',
+            'teaser_url' => 'teaser-video_02.mpg',
             'video_file' => 'video_02.mpg',
         ]);
 
@@ -103,9 +106,10 @@ class ModelVideoTest extends TestCase
         $tag1 = Tag::create(['name' => 'tag 1']);
         $video1 = Video::create([
             'title' => "titre de la 1ere vidéo",
+            'slug' => 'titre-de-la-1ere-video',
             'description' => 'description de la première vidéo',
             'duration' => 3600,
-            'teaser_file' => 'teaser-video_02.mpg',
+            'teaser_url' => 'teaser-video_02.mpg',
             'video_file' => 'video_02.mpg',
         ]);
 
@@ -124,9 +128,10 @@ class ModelVideoTest extends TestCase
         $tag1 = Tag::create(['name' => 'tag 1']);
         $video1 = Video::create([
             'title' => "titre de la 1ere vidéo",
+            'slug' => 'titre-de-la-1ere-video',
             'description' => 'description de la première vidéo',
             'duration' => 3600,
-            'teaser_file' => 'teaser-video_02.mpg',
+            'teaser_url' => 'teaser-video_02.mpg',
             'video_file' => 'video_02.mpg',
         ]);
 

@@ -21,14 +21,15 @@
             {!! Form::hidden('_method', 'PUT') !!}
         @endif
 
-        <div class="form-group">
+        <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
             <label class="control-label" for="name">Nom de la catégorie</label>
             {!!
                 Form::text('name', isset($category) ? $category->name : null, ['class' => 'form-control'])
             !!}
+            {!! $errors->first('name', '<span class="help-block">:message</span>') !!}
         </div>
 
-        <div class="form-group">
+        <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
             <label class="control-label" for="name">Slug</label>
             {!!
                 Form::text('slug', isset($category) ? $category->slug : null, ['class' => 'form-control'])

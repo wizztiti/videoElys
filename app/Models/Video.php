@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use App\Behaviours\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
-    protected $fillable = ['title', 'description', 'duration', 'teaser_file', 'video_file'];
+    use Sluggable;
+
+    protected $fillable = ['title', 'slug', 'description', 'duration', 'teaser_url', 'video_file'];
+    protected $sluggable = 'title';
 
     public function tags() {
         return $this->belongsToMany('App\Models\Tag');
