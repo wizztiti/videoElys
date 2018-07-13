@@ -173,4 +173,21 @@ class VideoControllerTest extends TestCase
         $this->assertEquals('https://www.youtube.com/watch?v=d4hhNL4BSvs&index=47&list=PLlxQJeQRaKDSnp4hbA3nJj_OnB0SCQLBU', $this->video1->teaser_url);
         $this->assertEquals('video_02.mpg', $this->video1->video_file);
     }
+
+    /**
+     * Vérifie que la suppression d'une vidéo est ok
+     *
+     * @return void
+     */
+    public function test_Admin_VideoController_Destroy()
+    {
+        $video_id = $this->video1->id;
+
+        $controller = new VideoController();
+        $response = $controller->destroy($this->video1);
+
+        $this->assertEquals(302, $response->getStatusCode());
+        $response = Video::where('id', $video_id)->first();
+        $this->assertEquals(null, $response);
+    }
 }

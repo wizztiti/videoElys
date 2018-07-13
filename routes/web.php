@@ -24,3 +24,6 @@ Route::prefix('admin')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::resource('video', 'Admin\VideoController');
 });
+Route::prefix('admin')->group(function () {
+    Route::resource('tag', 'Admin\TagController');
+});

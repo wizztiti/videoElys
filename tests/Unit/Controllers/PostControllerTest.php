@@ -171,4 +171,21 @@ class PostControllerTest extends TestCase
         $this->assertEquals('article-2', $this->post1->slug);
         $this->assertEquals('cat2', $this->post1->category->name);
     }
+
+    /**
+     * Vérifie que la suppression d'un post est ok
+     *
+     * @return void
+     */
+    public function test_Admin_PostController_Destroy()
+    {
+        $post_id = $this->post1->id;
+
+        $controller = new PostController();
+        $response = $controller->destroy($this->post1);
+
+        $this->assertEquals(302, $response->getStatusCode());
+        $response = Post::where('id', $post_id)->first();
+        $this->assertEquals(null, $response);
+    }
 }

@@ -95,4 +95,28 @@ class VideoController extends Controller
         flash($message, 'warning');
         return redirect(route('video.index'));
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  Video $video
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Video $video)
+    {
+        $message = 'Problème lors de la suppression de la vidéo';
+
+        try {
+            $video->delete();
+            if($video) {
+                flash('La vidéo a bien été supprimée', 'success');
+                return redirect(route('video.index'));
+            }
+        } catch(\Exception $exception) {
+            flash($message, 'warning');
+            Log::warning($exception->getCode() . '  ' . $exception->getMessage());
+        }
+        flash($message, 'warning');
+        return redirect(route('video.index'));
+    }
 }
