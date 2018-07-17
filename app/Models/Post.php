@@ -23,4 +23,9 @@ class Post extends Model
     public function tags() {
         return $this->belongsToMany('App\Models\Tag');
     }
+
+    /*public function setSlugAttribute($slug)
+    {
+        $this->attributes['slug'] = empty($slug) ? str_slug($this->title) : $slug;
+    }*/
 }
