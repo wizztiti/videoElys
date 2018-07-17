@@ -13,7 +13,8 @@ class PostControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public $category1, $category2;
+    public $category1;
+
     public $post1;
 
     public function setUp()
