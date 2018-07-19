@@ -27,3 +27,5 @@ Route::prefix('admin')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::resource('tag', 'Admin\TagController');
 });
+
+Route::get('/tag/{slug}', 'Admin\PostController@tag')->name('posts.tag');

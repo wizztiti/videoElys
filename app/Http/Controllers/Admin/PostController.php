@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
@@ -19,7 +20,7 @@ class PostController extends Controller
     public function index()
     {
         return view('admin.post.index', [
-            'posts' => Post::all()->load('category'),
+            'posts' => Post::with('tags')->get()->load('category'),
         ]);
     }
 
@@ -45,6 +46,7 @@ class PostController extends Controller
 
         try {
             $post = Post::create($request->only('title', 'text', 'slug', 'category_id'));
+            $post->saveTags($request->get('tags'));
 
             if($post) {
                 flash('L\'article a bien été créé');
@@ -130,5 +132,16 @@ class PostController extends Controller
         }
         flash($message, 'warning');
         return redirect(route('post.index'));
+    }
+
+    /**
+     *
+     */
+    public function tag($slug) {
+        $tag = Tag::where('slug', $slug)->first();
+        $posts = $tag->posts()->with('tags')->get();
+        return view('admin.post.index', [
+            'posts' => $posts
+        ]);
     }
 }
