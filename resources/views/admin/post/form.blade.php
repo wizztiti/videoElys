@@ -52,6 +52,14 @@
         {!! $errors->first('category_id', '<span class="help-block">:message</span>') !!}
     </div>
 
+    <div class="form-group {{ $errors->has('tags') ? 'has-error' : '' }}">
+        <label class="control-label" for="tags">Tags</label>
+        {!!
+            Form::text('tags', isset($post) ? $post->tagsList : null, ['class' => 'form-control'])
+        !!}
+        {!! $errors->first('tags', '<span class="help-block">:message</span>') !!}
+    </div>
+
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Sauvegarder</button>
     </div>

@@ -17,7 +17,7 @@ class CreateTagsTable extends Migration
             $table->increments('id');
             $table->string('name')->unique()->index();
             $table->string('slug')->unique()->index();
-            $table->timestamps();
+            $table->integer('post_count')->unsigned()->default(0);
         });
     }
 

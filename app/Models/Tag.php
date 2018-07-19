@@ -11,6 +11,7 @@ class Tag extends Model
 
     protected $fillable = ['name', 'slug'];
     protected $sluggable = 'name';
+    public $timestamps = false;
 
     public function posts() {
         return $this->belongsToMany('App\Models\Post');
@@ -18,5 +19,9 @@ class Tag extends Model
 
     public function videos() {
         return $this->belongsToMany('App\Models\Video');
+    }
+
+    public static function removeUnused() {
+        return static::where('post_count', 0)->delete();
     }
 }

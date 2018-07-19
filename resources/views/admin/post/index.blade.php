@@ -33,6 +33,11 @@
                         <input type="submit" value="Supprimer" class="btn btn-danger">
                     </form>
                 </td>
+                <td>
+                    @foreach($post->tags as $tag)
+                        <a href="{{ route('posts.tag', ['slug' => $tag->slug]) }}" class="badge badge-info">{{ $tag->name }}</a>
+                    @endforeach
+                </td>
             </tr>
         @endforeach
         </tbody>
