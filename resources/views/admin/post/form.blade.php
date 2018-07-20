@@ -55,7 +55,7 @@
     <div class="form-group {{ $errors->has('tags') ? 'has-error' : '' }}">
         <label class="control-label" for="tags">Tags</label>
         {!!
-            Form::text('tags', isset($post) ? $post->tagsList : null, ['class' => 'form-control'])
+            Form::text('tags', isset($post) ? $post->tagsList : null, ['class' => 'form-control', 'id' => 'tokenfield'])
         !!}
         {!! $errors->first('tags', '<span class="help-block">:message</span>') !!}
     </div>
