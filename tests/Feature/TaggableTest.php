@@ -8,7 +8,9 @@ use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 use Illuminate\Support\Facades\Event;
+
 
 class TaggableTest extends TestCase
 {
@@ -56,6 +58,7 @@ class TaggableTest extends TestCase
         $this->assertEquals(2, Tag::count());
         $this->assertEquals(2, DB::table('post_tag')->count());
         $this->assertEquals(1, Tag::where('name', 'tag1')->first()->post_count);
+
     }
 
     public function test_EmptyTags()
@@ -72,6 +75,7 @@ class TaggableTest extends TestCase
         $this->assertEquals(2, DB::table('post_tag')->where('post_id', $this->post2->id)->count());
         $this->assertEquals(2, Tag::where('name', 'tag1')->first()->post_count);
         $this->assertEquals(1, Tag::where('name', 'tag2')->first()->post_count);
+
     }
 
     public function test_deleteFromPivotTable() {
@@ -79,6 +83,7 @@ class TaggableTest extends TestCase
         $this->post1->delete();
         $this->assertEquals(0, DB::table('post_tag')->count());
     }
+
 
     public function test_postCountOnTags() {
         $this->post1->saveTags('tag1, tag2, tag3');
