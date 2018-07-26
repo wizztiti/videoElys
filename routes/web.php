@@ -29,3 +29,6 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::get('/tag/{slug}', 'Admin\PostController@tag')->name('posts.tag');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
