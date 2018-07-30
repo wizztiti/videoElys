@@ -6,6 +6,7 @@ use App\Mail\registerUser;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -35,13 +36,16 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home';
 
+    private $auth;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Guard $auth)
     {
+        $this->auth = $auth;
         $this->middleware('guest');
     }
 
@@ -121,6 +125,19 @@ class RegisterController extends Controller
         return redirect($this->redirectPath());
     }
 
+    protected function registerConfirm(Request $request, $user_id, $token)
+    {
+        $user = User::findOrFail($user_id);
+        if($user->confirmation_token == $token && $user->confirmed == false) {
+            $user->confirmation_token = null;
+            $user->confirmed = true;
+            $user->save();
+        } else {
+            return abort(500);
+        }
 
+        $this->auth->login($user);
+        return redirect('/')->with(flash('Votre compte a bien été confirmé'));
+    }
 
 }
