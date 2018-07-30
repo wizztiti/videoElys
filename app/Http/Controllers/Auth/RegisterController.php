@@ -80,9 +80,7 @@ class RegisterController extends Controller
             'confirmation_token' =>$token,
             'password' => Hash::make($data['password']),
         ]);
-        /*$this->mailer->send('emails.register', compact('token', 'user'), function($message) use ($user) {
-            $message->to($user->email)->subject('Confirmation de votre compte');
-        });*/
+
         Mail::to($user)->send(new registerUser($token, $user));
 
         return $user;
