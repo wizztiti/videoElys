@@ -34,3 +34,13 @@ Route::prefix('admin')->group(function () {
 Route::get('/tag/{slug}', 'Admin\PostController@tag')->name('posts.tag');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+// via Middleware Auth
+Route::group([
+    'middleware' => 'App\Http\Middleware\Auth',
+], function() {
+    Route::get('/my-account', 'AccountController@accueil')->name('my-account ');
+    Route::get('userBoard.passwordForm', 'AccountController@showFormPassword');
+    Route::post('userBoard.passwordForm', 'AccountController@updatePassword');
+});
