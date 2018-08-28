@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Views;
 
+use App\Models\Post;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -21,7 +22,7 @@ class ShowArticleTest extends TestCase
 
         $this->category1 = Category::create([
             'name' => 'cat1',
-            'slug' => 'cat1'
+            'slug' => null
         ]);
 
         $this->post1 = $this->category1->posts()->create([
@@ -39,10 +40,11 @@ class ShowArticleTest extends TestCase
      */
     function show_an_article()
     {
-        $this->withExceptionHandling();
-
         $this->get('post/article-1')
             ->assertSuccessful()
-            ->assertViewIs('public.post');
+            ->assertViewIs('public.post')
+            ->assertSee('titre de l\'article numéro 1')
+            ->assertSee('un text tres long de l\'article numéro 1')
+            ->assertSee('cat1');
     }
 }
