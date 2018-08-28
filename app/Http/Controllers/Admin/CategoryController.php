@@ -46,14 +46,14 @@ class CategoryController extends Controller
 
             if($category) {
                 flash('La catégorie a bien été créée');
-                return redirect(route('category.edit', $category));
+                return redirect(route('admin.category.edit', $category));
             }
         } catch(\Exception $exception) {
             flash($message, 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
         flash($message, 'warning');
-        return redirect(route('category.index'));
+        return redirect(route('admin.category.index'));
     }
 
 
@@ -97,14 +97,14 @@ class CategoryController extends Controller
 
             if($category) {
                 flash('La catégorie a bien été modifiée', 'success');
-                return redirect(route('category.index'));
+                return redirect(route('admin.category.index'));
             }
         } catch(\Exception $exception) {
             flash($message, 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
         flash($message, 'warning');
-        return redirect(route('category.index'));
+        return redirect(route('admin.category.index'));
     }
 
     /**
@@ -128,6 +128,6 @@ class CategoryController extends Controller
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
         flash($message, 'warning');
-        return redirect(route('category.index'));
+        return redirect(route('admin.category.index'));
     }
 }

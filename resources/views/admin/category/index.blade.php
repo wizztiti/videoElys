@@ -25,7 +25,7 @@
                     <td>{{ $category->slug }}</td>
                     <td>
                         <a href="{{ action('Admin\CategoryController@edit', $category) }}" class="btn btn-primary">Editer</a>
-                        <form action="{{ route('category.destroy', $category) }}" method="POST">
+                        <form action="{{ route('admin.category.destroy', $category) }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <input type="submit" value="Supprimer" class="btn btn-danger">

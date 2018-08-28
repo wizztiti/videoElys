@@ -42,7 +42,7 @@ class CategoryControllerTest extends TestCase
      */
     public function test_Admin_CategoryController_Create()
     {
-        $response = $this->get(route('category.create'));
+        $response = $this->get(route('admin.category.create'));
 
         $response->assertStatus(200);
     }

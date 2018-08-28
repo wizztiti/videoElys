@@ -11,8 +11,8 @@
     {!!
         Form::open([
             'url' => isset($video)
-                ? route('video.update', $video)
-                : route('video.store'),
+                ? route('admin.video.update', $video)
+                : route('admin.video.store'),
             'method' => 'POST'
         ])
     !!}

@@ -44,6 +44,7 @@ class PostControllerTest extends TestCase
      */
     public function test_Admin_PostController_Index()
     {
+        $this->withExceptionHandling();
         $response = $this->get(action('Admin\PostController@index'));
         $response->assertStatus(200);
     }

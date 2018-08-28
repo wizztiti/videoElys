@@ -27,7 +27,7 @@
                 <td>{{ $post->category->name }}</td>
                 <td>
                     <a href="{{ action('Admin\PostController@edit', $post) }}" class="btn btn-primary">Editer</a>
-                    <form action="{{ route('post.destroy', $post) }}" method="POST">
+                    <form action="{{ route('admin.post.destroy', $post) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                         <input type="submit" value="Supprimer" class="btn btn-danger">
@@ -35,7 +35,7 @@
                 </td>
                 <td>
                     @foreach($post->tags as $tag)
-                        <a href="{{ route('posts.tag', ['slug' => $tag->slug]) }}" class="badge badge-info">{{ $tag->name }}</a>
+                        <a href="{{ route('admin.posts.tag', ['slug' => $tag->slug]) }}" class="badge badge-info">{{ $tag->name }}</a>
                     @endforeach
                 </td>
             </tr>

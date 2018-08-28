@@ -50,14 +50,14 @@ class PostController extends Controller
 
             if($post) {
                 flash('L\'article a bien été créé');
-                return redirect(route('post.index', $post));
+                return redirect(route('admin.post.index', $post));
             }
         } catch(\Exception $exception) {
             flash($message, 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
         flash($message, 'warning');
-        return redirect(route('post.index'));
+        return redirect(route('admin.post.index'));
     }
 
     /**
@@ -101,14 +101,14 @@ class PostController extends Controller
 
             if($post) {
                 flash('L\'article a bien été modifié', 'success');
-                return redirect(route('post.index'));
+                return redirect(route('admin.post.index'));
             }
         } catch(\Exception $exception) {
             flash($message, 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
         flash($message, 'warning');
-        return redirect(route('post.index'));
+        return redirect(route('admin.post.index'));
     }
 
     /**
@@ -125,14 +125,14 @@ class PostController extends Controller
             $post->delete();
             if($post) {
                 flash('L\'article a bien été supprimé', 'success');
-                return redirect(route('post.index'));
+                return redirect(route('admin.post.index'));
             }
         } catch(\Exception $exception) {
             flash($message, 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
         flash($message, 'warning');
-        return redirect(route('post.index'));
+        return redirect(route('admin.post.index'));
     }
 
     /**

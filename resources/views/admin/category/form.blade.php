@@ -11,8 +11,8 @@
     {!!
         Form::open([
             'url' => isset($category)
-                ? route('category.update', $category)
-                : route('category.store'),
+                ? route('admin.category.update', $category)
+                : route('admin.category.store'),
             'method' => 'POST'
         ])
     !!}
