@@ -11,8 +11,8 @@
     {!!
         Form::open([
             'url' => isset($tag)
-                ? route('tag.update', $tag)
-                : route('tag.store'),
+                ? route('admin.tag.update', $tag)
+                : route('admin.tag.store'),
             'method' => 'POST'
         ])
     !!}

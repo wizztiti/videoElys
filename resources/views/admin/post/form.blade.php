@@ -11,8 +11,8 @@
     {!!
         Form::open([
             'url' => isset($post)
-                ? route('post.update', $post)
-                : route('post.store'),
+                ? route('admin.post.update', $post)
+                : route('admin.post.store'),
             'method' => 'POST'
         ])
     !!}

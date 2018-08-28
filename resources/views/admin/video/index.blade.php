@@ -33,7 +33,7 @@
                 <td>{{ $video->video_file }}</td>
                 <td>
                     <a href="{{ action('Admin\VideoController@edit', $video) }}" class="btn btn-primary">Editer</a>
-                    <form action="{{ route('video.destroy', $video) }}" method="POST">
+                    <form action="{{ route('admin.video.destroy', $video) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                         <input type="submit" value="Supprimer" class="btn btn-danger">

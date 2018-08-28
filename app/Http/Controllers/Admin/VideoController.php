@@ -47,14 +47,14 @@ class VideoController extends Controller
 
             if($video) {
                 flash('La vidéo a bien été créée');
-                return redirect(route('video.index', $video));
+                return redirect(route('admin.video.index', $video));
             }
         } catch(\Exception $exception) {
             flash($message, 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
         flash($message, 'warning');
-        return redirect(route('video.index'));
+        return redirect(route('admin.video.index'));
     }
 
     /**
@@ -86,14 +86,14 @@ class VideoController extends Controller
 
             if($video) {
                 flash('La vidéo a bien été modifiée', 'success');
-                return redirect(route('video.index'));
+                return redirect(route('admin.video.index'));
             }
         } catch(\Exception $exception) {
             flash($message, 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
         flash($message, 'warning');
-        return redirect(route('video.index'));
+        return redirect(route('admin.video.index'));
     }
 
     /**
@@ -110,13 +110,13 @@ class VideoController extends Controller
             $video->delete();
             if($video) {
                 flash('La vidéo a bien été supprimée', 'success');
-                return redirect(route('video.index'));
+                return redirect(route('admin.video.index'));
             }
         } catch(\Exception $exception) {
             flash($message, 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
         flash($message, 'warning');
-        return redirect(route('video.index'));
+        return redirect(route('admin.video.index'));
     }
 }

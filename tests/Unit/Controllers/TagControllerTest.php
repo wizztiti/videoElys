@@ -42,7 +42,7 @@ class TagControllerTest extends TestCase
      */
     public function test_Admin_TagController_Create()
     {
-        $response = $this->get(route('tag.create'));
+        $response = $this->get(route('admin.tag.create'));
 
         $response->assertStatus(200);
     }
