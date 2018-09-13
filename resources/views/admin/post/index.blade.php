@@ -23,8 +23,8 @@
             <tr>
                 <td>{{ $post->id }}</td>
                 <td>{{ $post->title }}</td>
-                <td>{{ $post->slug }}</td>
-                <td>{{ $post->category->name }}</td>
+                <td><a href="/post/{{ $post->category->name }}/{{ $post->slug }}">{{ $post->slug }}</a></td>
+                <td><a href="/post/{{ $post->category->slug }}">{{ $post->category->name }}</a></td>
                 <td>
                     <a href="{{ action('Admin\PostController@edit', $post) }}" class="btn btn-primary">Editer</a>
                     <form action="{{ route('admin.post.destroy', $post) }}" method="POST">

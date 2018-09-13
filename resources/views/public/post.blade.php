@@ -13,13 +13,16 @@
 
                 <h1>{!! $post->title !!}</h1>
 
-                 Catégorie :  {!! $post->category->name !!}} <br>
-                    _________________________________<br>
+                 Catégorie :  <a href="/post/{{ $post->category->slug }}">{!! $post->category->name !!}</a> <br><br>
+                    <iframe src="https://www.youtube.com/embed/abcde" frameborder="0"></iframe>
+                    <br>
+                    Contenu:
+                    <br>
+                {!! $post->text !!}
+                    <br>
 
-                    Contenu:<br>
-                {!! $post->text !!}}<br>
-
-                    _________________________________<br>
+                    _________________________________
+                    <br>
                 {!! $post->tagsList !!}
 
             </div>

@@ -11,20 +11,21 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('home');
-});
+});*/
 
 // Authentification
 Auth::routes();
 Route::get('/auth/confirm/{id}/{token}', 'Auth\RegisterController@registerConfirm');
 
 //Homepage
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'PostController@index')->name('home');
 
 // Affichage d'un article
-Route::get('/post/{slug}', 'PostController@show')->name('post');
-
+Route::get('/post/{category}/{slug}', 'PostController@show')->name('post');
+Route::get('post/{category}', 'PostController@indexCategory')->name('post.category.list');
+Route::get('post/{tag}', 'PostController@indexTag')->name('post.tag.list');
 
 
 // BACKEND
