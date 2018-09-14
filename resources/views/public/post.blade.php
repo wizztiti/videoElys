@@ -23,7 +23,9 @@
 
                     _________________________________
                     <br>
-                {!! $post->tagsList !!}
+                    @foreach($post->tags as $tag)
+                        <a href="/post/tag:{{ $tag->slug }}" class="badge badge-info">{{ $tag->name }}</a>
+                    @endforeach
 
             </div>
         </div>

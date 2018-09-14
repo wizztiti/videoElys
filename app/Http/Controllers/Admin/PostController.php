@@ -135,14 +135,12 @@ class PostController extends Controller
         return redirect(route('admin.post.index'));
     }
 
-    /**
-     *
-     */
-    public function tag($slug) {
+    /*public function tag($slug) {
         $tag = Tag::where('slug', $slug)->first();
         $posts = $tag->posts()->with('tags')->get();
         return view('admin.post.index', [
             'posts' => $posts
         ]);
     }
+    */
 }

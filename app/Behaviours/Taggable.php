@@ -63,7 +63,9 @@ trait Taggable
     }
 
     /**
+     * retourne la liste des tags de l'article
      *
+     * @return String
      */
     public function getTagsListAttribute() {
         return $this->tags->pluck('name')->implode(',');

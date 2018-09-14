@@ -18,6 +18,10 @@ class Post extends Model
         return $this->belongsTo('App\Models\Category');
     }
 
+    public function tag() {
+        return $this->belongsTo('App\Models\tag');
+    }
+
     public function author() {
         return $this->hasOne('App\Models\Author');
     }
