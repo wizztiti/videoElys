@@ -19,13 +19,13 @@
 Auth::routes();
 Route::get('/auth/confirm/{id}/{token}', 'Auth\RegisterController@registerConfirm');
 
-//Homepage
+// Affichage liste  des articles
 Route::get('/', 'PostController@index')->name('home');
+Route::get('post/category:{category}', 'PostController@indexCategory')->name('post.category.list');
+Route::get('post/tag:{tag}', 'PostController@indexTag')->name('post.tag.list');
 
 // Affichage d'un article
 Route::get('/post/{category}/{slug}', 'PostController@show')->name('post');
-Route::get('post/{category}', 'PostController@indexCategory')->name('post.category.list');
-Route::get('post/{tag}', 'PostController@indexTag')->name('post.tag.list');
 
 
 // BACKEND
