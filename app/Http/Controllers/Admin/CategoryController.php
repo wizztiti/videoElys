@@ -46,7 +46,7 @@ class CategoryController extends Controller
 
             if($category) {
                 flash('La catégorie a bien été créée');
-                return redirect(route('admin.category.edit', $category));
+                return redirect(route('admin.category.index', $category));
             }
         } catch(\Exception $exception) {
             flash($message, 'warning');
