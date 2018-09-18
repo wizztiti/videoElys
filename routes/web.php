@@ -31,20 +31,11 @@ Route::get('/post/{category}/{slug}', 'PostController@show')->name('post');
 // BACKEND
 Route::name('admin.')->prefix('admin')->group(function () {
     Route::resource('category', 'Admin\CategoryController');
-});
-
-Route::name('admin.')->prefix('admin')->group(function () {
     Route::resource('post', 'Admin\PostController');
-});
-Route::name('admin.')->prefix('admin')->group(function () {
     Route::resource('video', 'Admin\VideoController');
-});
-Route::name('admin.')->prefix('admin')->group(function () {
     Route::resource('tag', 'Admin\TagController');
 });
 Route::get('admin/tag/{slug}', 'Admin\PostController@tag')->name('admin.posts.tag');
-
-
 
 // via Middleware Auth
 
