@@ -46,7 +46,6 @@ class ShowArticleTest extends TestCase
             ->assertSuccessful()
             ->assertViewIs('public.post')
             ->assertSee('titre de l\'article numéro 1')
-            ->assertSee('src="https://www.youtube.com/embed/abcde"')
             ->assertSee('un text tres long de l\'article numéro 1')
             ->assertSee('category1');
     }
