@@ -48,6 +48,20 @@ class ShowArticlesListTest extends TestCase
         ]);
     }
 
+    /**
+     * @test
+     *
+     * @return void
+     */
+    function test_show_blog_index()
+    {
+        $this->withoutExceptionHandling();
+
+        $this->get('blog')
+            ->assertSuccessful()
+            ->assertViewIs('public.index');
+    }
+
 
     /**
      * @test

@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/auth/confirm/{id}/{token}', 'Auth\RegisterController@registerConfirm');
 
 // Affichage liste  des articles
-Route::get('/', 'PostController@index')->name('home');
+Route::get('/blog', 'PostController@index')->name('blog');
 Route::get('post/category:{category}', 'PostController@indexCategory')->name('post.category.list');
 Route::get('post/tag:{tag}', 'PostController@indexTag')->name('post.tag.list');
 
