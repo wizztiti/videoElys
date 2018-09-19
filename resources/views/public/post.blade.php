@@ -2,83 +2,90 @@
 
 @section('content')
         <div class="row justify-content-center">
-            <article class="post-content col">
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
+            <div class="col">
+                <div class="post-content">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <img src="/img/image.jpg" class="img-fluid">
+
+                    <div class="links text-center">
+                        <a href="/post/{{ $post->category->slug }}" class="category">{!! $post->category->name !!}</a>
                     </div>
-                @endif
 
-                <img src="/img/image.jpg" class="img-fluid">
+                    <h1 class="text-center">{!! $post->title !!}</h1>
 
-                <div class="links text-center">
-                    <a href="/post/{{ $post->category->slug }}" class="category">{!! $post->category->name !!}</a>
+                    <div class="tags text-center">
+                        @foreach($post->tags as $tag)
+                            <a href="/post/tag:{{ $tag->slug }}" class="tag">#{{ $tag->name }}</a>
+                        @endforeach
+                    </div>
+
+                    <div class="text">
+                        <article>
+                            {!! $post->text !!}
+                        </article>
+                    </div>
                 </div>
+            </div>
 
-                <h1 class="text-center">{!! $post->title !!}</h1>
+            <div class="col-lg-4">
+                <section class="aside">
+                    <h3>Videos relacionadas</h3>
 
-                <div class="tags text-center">
-                    @foreach($post->tags as $tag)
-                        <a href="/post/tag:{{ $tag->slug }}" class="tag">#{{ $tag->name }}</a>
-                    @endforeach
-                </div>
-
-                <div class="text">
-                    {{ $post->text }}
-                </div>
-
-            </article>
-            <section class="aside col-lg-4">
-                <h3>Videos relacionadas</h3>
-
-                <div class="row">
-                    <div class="col-xs col-sm-6 col-lg-12">
-                        <div class="video">
-                            <h4>Educació respectuosa</h4>
-                            <div class="links">
-                                <div class="love"><img src="" alt="">609</div>
-                                <div class="duration"><img src="" alt="">1h10</div>
-                            </div>
-                            <div class="resume">
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                    <div class="row">
+                        <div class="col-xs col-sm-6 col-lg-12">
+                            <div class="video">
+                                <h4>Educació respectuosa</h4>
+                                <div class="links">
+                                    <div class="love"><img src="" alt="">609</div>
+                                    <div class="duration"><img src="" alt="">1h10</div>
+                                </div>
+                                <div class="resume">
+                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xs col-sm-6 col-lg-12">
-                        <div class="video">
-                            <h4>Educació respectuosa</h4>
-                            <div class="links">
-                                <div class="love"><img src="" alt="">609</div>
-                                <div class="duration"><img src="" alt="">1h10</div>
-                            </div>
-                            <div class="resume">
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xs col-sm-6 col-lg-12">
-                        <div class="video">
-                            <h4>Educació respectuosa</h4>
-                            <div class="links">
-                                <div class="love"><img src="" alt="">609</div>
-                                <div class="duration"><img src="" alt="">1h10</div>
-                            </div>
-                            <div class="resume">
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        <div class="col-xs col-sm-6 col-lg-12">
+                            <div class="video">
+                                <h4>Educació respectuosa</h4>
+                                <div class="links">
+                                    <div class="love"><img src="" alt="">609</div>
+                                    <div class="duration"><img src="" alt="">1h10</div>
+                                </div>
+                                <div class="resume">
+                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                </div>
                             </div>
                         </div>
+
+                        <div class="col-xs col-sm-6 col-lg-12">
+                            <div class="video">
+                                <h4>Educació respectuosa</h4>
+                                <div class="links">
+                                    <div class="love"><img src="" alt="">609</div>
+                                    <div class="duration"><img src="" alt="">1h10</div>
+                                </div>
+                                <div class="resume">
+                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
-                </div>
 
 
 
 
 
 
+                </section>
+            </div>
 
-            </section>
         </div><!-- row -->
 
         <div class="post-links">
