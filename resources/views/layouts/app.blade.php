@@ -12,7 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    @stack('javascript-libs');
+    @stack('javascript-libs')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -24,7 +24,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
+            <div class="container-fluid">
                 @if(session()->has('notification'))
                     <div class="alert alert-{{ session()->get('notification.type') }}">
                         {{ session()->get('notification.message') }}

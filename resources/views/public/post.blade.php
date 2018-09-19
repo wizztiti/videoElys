@@ -2,7 +2,7 @@
 
 @section('content')
         <div class="row justify-content-center">
-            <div class="post-content col-md-8">
+            <article class="post-content col">
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
@@ -24,52 +24,67 @@
                 </div>
 
                 <div class="text">
-                    {!! $post->text !!}
+                    {{ $post->text }}
                 </div>
 
-            </div>
-            <section class="aside col-4">
+            </article>
+            <section class="aside col-lg-4">
                 <h3>Videos relacionadas</h3>
 
-                <div class="video">
-                    <h4>Educació respectuosa</h4>
-                    <div class="links">
-                        <div class="love"><img src="" alt="">609</div>
-                        <div class="duration"><img src="" alt="">1h10</div>
+                <div class="row">
+                    <div class="col-xs col-sm-6 col-lg-12">
+                        <div class="video">
+                            <h4>Educació respectuosa</h4>
+                            <div class="links">
+                                <div class="love"><img src="" alt="">609</div>
+                                <div class="duration"><img src="" alt="">1h10</div>
+                            </div>
+                            <div class="resume">
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            </div>
+                        </div>
                     </div>
-                    <div class="resume">
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                    <div class="col-xs col-sm-6 col-lg-12">
+                        <div class="video">
+                            <h4>Educació respectuosa</h4>
+                            <div class="links">
+                                <div class="love"><img src="" alt="">609</div>
+                                <div class="duration"><img src="" alt="">1h10</div>
+                            </div>
+                            <div class="resume">
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="col-xs col-sm-6 col-lg-12">
+                        <div class="video">
+                            <h4>Educació respectuosa</h4>
+                            <div class="links">
+                                <div class="love"><img src="" alt="">609</div>
+                                <div class="duration"><img src="" alt="">1h10</div>
+                            </div>
+                            <div class="resume">
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="video">
-                    <h4>Educació respectuosa</h4>
-                    <div class="links">
-                        <div class="love"><img src="" alt="">609</div>
-                        <div class="duration"><img src="" alt="">1h10</div>
-                    </div>
-                    <div class="resume">
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                    </div>
-                </div>
 
-                <div class="video">
-                    <h4>Educació respectuosa</h4>
-                    <div class="links">
-                        <div class="love"><img src="" alt="">609</div>
-                        <div class="duration"><img src="" alt="">1h10</div>
-                    </div>
-                    <div class="resume">
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                    </div>
-                </div>
+
+
+
+
+
             </section>
         </div><!-- row -->
 
         <div class="post-links">
             <h3>Articulos relacionados</h3>
             <div class="row">
-                <div class="col-4">
+                <div class="col-xs col-sm-6 col-md-4">
                     <div class="post">
                         <img src="/img/image-blue.jpg" class="img-fluid">
                         <div class="resume">
@@ -86,7 +101,7 @@
                     </div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-xs col-sm-6 col-md-4">
                     <div class="post">
                         <img src="/img/image-blue.jpg" class="img-fluid">
                         <div class="resume">
@@ -103,7 +118,7 @@
                     </div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-xs col-sm-6 col-md-4">
                     <div class="post">
                         <img src="/img/image-blue.jpg" class="img-fluid">
                         <div class="resume">
@@ -119,6 +134,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
