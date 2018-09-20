@@ -22,7 +22,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="main">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container-fluid">
                 @if(session()->has('notification'))
