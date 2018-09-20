@@ -95,7 +95,7 @@
                             <div class="resume">
                                 <h4><a href="/post/{{ $post->category->slug }}/{{ $post->slug }}">{!! $post->title !!}</a></h4>
                                 <div class="text">
-                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                    {{ substr($post->text, 0, 120) }}
                                 </div>
                                 <div class="links">
                                     <div class="love"><img src="" alt="">609</div>
