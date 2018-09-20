@@ -64,6 +64,7 @@ class PostController extends Controller
     {
         return view('public.post', [
             'post' => Post::where('slug', $slug)->first(),
+            'postLinks' => Post::with('tags')->get()->load('category'),
         ]);
     }
 }
