@@ -1,34 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
 
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
+    <h3>Blog</h3>
+
+    <div class="post-links">
+
+        <div class="row">
+
+            @foreach($posts as $post)
+                <div class="col-xs col-sm-6 col-md-4">
+                    <div class="post">
+                        <a href="/post/{{ $post->category->slug }}/{{ $post->slug }}"><img src="/img/teaser-post.jpg" class="img-fluid"></a>
+                        <div class="resume">
+                            <h4><a href="/post/{{ $post->category->slug }}/{{ $post->slug }}">{!! $post->title !!}</a></h4>
+                            <div class="text">
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            </div>
+                            <div class="links">
+                                <div class="love"><img src="" alt="">609</div>
+                                <div class="comments"><img src="" alt="">120</div>
+                                <span class="share">Share</span>
+                            </div>
+                        </div>
                     </div>
-                @endif
+                </div>
+            @endforeach
 
-                @foreach($posts as $post)
-                    <h1><a href="/post/{{ $post->category->slug }}/{{ $post->slug }}">{!! $post->title !!}</a></h1>
-
-                    Catégorie : <a href="/post-index/category:{{ $post->category->slug }}">{!! $post->category->name !!}</a> <br><br>
-                    <iframe src="https://www.youtube.com/embed/abcde" frameborder="0"></iframe>
-                    <br>
-                    _________________________________
-                    <br>
-
-                    @foreach($post->tags as $tag)
-                        <a href="/post-index/tag:{{ $tag->slug }}" class="badge badge-info">{{ $tag->name }}</a>
-                    @endforeach
-
-                    <a href="/post/{{ $post->category->slug }}/{{ $post->slug }}" class="btn btn-primary">Voir</a>
-                    <br><br><br><br><br>
-                @endforeach
-
-            </div>
         </div>
     </div>
+
 @endsection

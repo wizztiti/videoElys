@@ -88,56 +88,24 @@
         <div class="post-links">
             <h3>Articulos relacionados</h3>
             <div class="row">
-                <div class="col-xs col-sm-6 col-md-4">
-                    <div class="post">
-                        <img src="/img/image-blue.jpg" class="img-fluid">
-                        <div class="resume">
-                            <h4>Excepteur sint.</h4>
-                            <div class="text">
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                            </div>
-                            <div class="links">
-                                <div class="love"><img src="" alt="">609</div>
-                                <div class="comments"><img src="" alt="">120</div>
-                                <span class="share">Share</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xs col-sm-6 col-md-4">
-                    <div class="post">
-                        <img src="/img/image-blue.jpg" class="img-fluid">
-                        <div class="resume">
-                            <h4>Excepteur sint.</h4>
-                            <div class="text">
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                            </div>
-                            <div class="links">
-                                <div class="love"><img src="" alt="">609</div>
-                                <div class="comments"><img src="" alt="">120</div>
-                                <span class="share">Share</span>
+                @foreach($postLinks as $post)
+                    <div class="col-xs col-sm-6 col-md-4">
+                        <div class="post">
+                            <a href="/post/{{ $post->category->slug }}/{{ $post->slug }}"><img src="/img/teaser-post.jpg" class="img-fluid"></a>
+                            <div class="resume">
+                                <h4><a href="/post/{{ $post->category->slug }}/{{ $post->slug }}">{!! $post->title !!}</a></h4>
+                                <div class="text">
+                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                </div>
+                                <div class="links">
+                                    <div class="love"><img src="" alt="">609</div>
+                                    <div class="comments"><img src="" alt="">120</div>
+                                    <span class="share">Share</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-xs col-sm-6 col-md-4">
-                    <div class="post">
-                        <img src="/img/image-blue.jpg" class="img-fluid">
-                        <div class="resume">
-                            <h4>Excepteur sint.</h4>
-                            <div class="text">
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                            </div>
-                            <div class="links">
-                                <div class="love"><img src="" alt="">609</div>
-                                <div class="comments"><img src="" alt="">120</div>
-                                <span class="share">Share</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
         </div>
