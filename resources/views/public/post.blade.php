@@ -10,7 +10,7 @@
                         </div>
                     @endif
 
-                    <img src="/img/image.jpg" class="img-fluid">
+                    <img src="/img/image.jpg" class="img-fluid" alt="">
 
                     <div class="links text-center">
                         <a href="/post/{{ $post->category->slug }}" class="category">{!! $post->category->name !!}</a>
@@ -77,12 +77,9 @@
 
                     </div>
 
-
-
-
-
-
-
+                    <div class="image d-none d-lg-block">
+                        <img src="/img/image-aside.jpg" class="img-fluid" alt="">
+                    </div>
                 </section>
             </div>
 
