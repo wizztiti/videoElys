@@ -19,8 +19,13 @@ $creme : #f1f8fe;
 body {
     font-family: sans-serif;
     background-color: #FFF;
-    max-width: 78rem;
+
     margin: 0 auto;
+
+    .main {
+        max-width: 78rem;
+        margin: 0 auto;
+    }
 
     #app {
         min-height: 100vh;
@@ -160,7 +165,8 @@ body {
         background-color: $moutarde;
         height: 120px;
         width: 100%;
-        //position: absolute;
+        position: relative;
         bottom: 0;
+        left: 0;
     }
 }
