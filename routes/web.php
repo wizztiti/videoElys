@@ -11,9 +11,9 @@
 |
 */
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('home');
-});*/
+});
 
 // Authentification
 Auth::routes();
@@ -21,8 +21,8 @@ Route::get('/auth/confirm/{id}/{token}', 'Auth\RegisterController@registerConfir
 
 // Affichage liste  des articles
 Route::get('/blog', 'PostController@index')->name('blog');
-Route::get('post/category:{category}', 'PostController@indexCategory')->name('post.category.list');
-Route::get('post/tag:{tag}', 'PostController@indexTag')->name('post.tag.list');
+Route::get('post-index/category:{category}', 'PostController@indexCategory')->name('post.category.list');
+Route::get('post-index/tag:{tag}', 'PostController@indexTag')->name('post.tag.list');
 
 // Affichage d'un article
 Route::get('/post/{category}/{slug}', 'PostController@show')->name('post');

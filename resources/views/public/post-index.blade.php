@@ -14,14 +14,14 @@
                 @foreach($posts as $post)
                     <h1><a href="/post/{{ $post->category->slug }}/{{ $post->slug }}">{!! $post->title !!}</a></h1>
 
-                    Catégorie : <a href="/post/category:{{ $post->category->slug }}">{!! $post->category->name !!}</a> <br><br>
+                    Catégorie : <a href="/post-index/category:{{ $post->category->slug }}">{!! $post->category->name !!}</a> <br><br>
                     <iframe src="https://www.youtube.com/embed/abcde" frameborder="0"></iframe>
                     <br>
                     _________________________________
                     <br>
 
                     @foreach($post->tags as $tag)
-                        <a href="/post/tag:{{ $tag->slug }}" class="badge badge-info">{{ $tag->name }}</a>
+                        <a href="/post-index/tag:{{ $tag->slug }}" class="badge badge-info">{{ $tag->name }}</a>
                     @endforeach
 
                     <a href="/post/{{ $post->category->slug }}/{{ $post->slug }}" class="btn btn-primary">Voir</a>

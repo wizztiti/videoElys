@@ -17,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('public.index', [
+        return view('public.post-index', [
             'posts' => Post::with('tags')->get()->load('category'),
         ]);
     }
@@ -32,7 +32,7 @@ class PostController extends Controller
     {
         $category = Category::where('slug', $slug)->first();
         $posts = $category->posts()->with('category')->get();
-        return view('public.index', [
+        return view('public.post-index', [
             'category' => $category,
             'posts' => $posts
         ]);
@@ -48,7 +48,7 @@ class PostController extends Controller
     {
         $tag = Tag::where('slug', $slug)->first();
         $posts = $tag->posts()->with('tag')->get();
-        return view('public.index', [
+        return view('public.post-index', [
             'tag' => $tag,
             'posts' => $posts
         ]);
