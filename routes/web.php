@@ -13,19 +13,19 @@
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 // Authentification
 Auth::routes();
 Route::get('/auth/confirm/{id}/{token}', 'Auth\RegisterController@registerConfirm');
 
-// Affichage liste  des articles
+// Affichage liste des articles
 Route::get('/blog', 'PostController@index')->name('blog');
-Route::get('post-index/category:{category}', 'PostController@indexCategory')->name('post.category.list');
-Route::get('post-index/tag:{tag}', 'PostController@indexTag')->name('post.tag.list');
+Route::get('/blog/category:{category}', 'PostController@indexCategory')->name('blog.category.list');
+Route::get('/blog/tag:{tag}', 'PostController@indexTag')->name('blog.tag.list');
 
 // Affichage d'un article
-Route::get('/post/{category}/{slug}', 'PostController@show')->name('post');
+Route::get('/blog/{category}/{post}', 'PostController@show')->name('blog.post');
 
 
 // BACKEND

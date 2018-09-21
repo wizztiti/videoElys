@@ -42,7 +42,7 @@ class ShowArticleTest extends TestCase
     {
         //$this->withExceptionHandling();
 
-        $this->get('post/category1/article-1')
+        $this->get(route('blog.post', ['category' => $this->category1->slug , 'post' => $this->post1->slug]))
             ->assertSuccessful()
             ->assertViewIs('public.post')
             ->assertSee('titre de l\'article numéro 1')

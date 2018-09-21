@@ -57,7 +57,7 @@ class ShowArticlesListTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $this->get('blog')
+        $this->get(route('blog'))
             ->assertSuccessful()
             ->assertViewIs('public.post-index');
     }
@@ -72,13 +72,13 @@ class ShowArticlesListTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $this->get('post-index/category:category-1')
+        $this->get(route('blog.category.list', ['category' => $this->category1->slug]))
             ->assertSuccessful()
             ->assertViewIs('public.post-index')
             ->assertSee('titre de l\'article numéro 1')
             ->assertSee('titre de l\'article numéro 2');
 
-        $this->get('post-index/category:category-2')
+        $this->get(route('blog.category.list', ['category' => $this->category2->slug]))
             ->assertSuccessful()
             ->assertViewIs('public.post-index')
             ->assertSee('titre de l\'article numéro 3');

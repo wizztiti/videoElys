@@ -11,9 +11,9 @@
             @foreach($posts as $post)
                 <div class="col-xs col-sm-6 col-md-4">
                     <div class="post">
-                        <a href="/post/{{ $post->category->slug }}/{{ $post->slug }}"><img src="/img/teaser-post.jpg" class="img-fluid"></a>
+                        <a href="{{ route('blog.post', ['category' => $post->category->slug, 'post' => $post->slug]) }}"><img src="/img/teaser-post.jpg" class="img-fluid"></a>
                         <div class="resume">
-                            <h4><a href="/post/{{ $post->category->slug }}/{{ $post->slug }}">{!! $post->title !!}</a></h4>
+                            <h4><a href="{{ route('blog.post', ['category' => $post->category->slug, 'post' => $post->slug]) }}">{!! $post->title !!}</a></h4>
                             <div class="text">
                                 {{ substr($post->text, 0, 120) }}
                             </div>
@@ -30,9 +30,9 @@
             @foreach($posts as $post)
                 <div class="col-xs col-sm-6 col-md-4">
                     <div class="post">
-                        <a href="/post/{{ $post->category->slug }}/{{ $post->slug }}"><img src="/img/teaser-post.jpg" class="img-fluid"></a>
+                        <a href="{{ route('blog.post', ['category' => $post->category->slug, 'post' => $post->slug]) }}"><img src="/img/teaser-post.jpg" class="img-fluid"></a>
                         <div class="resume">
-                            <h4><a href="/post/{{ $post->category->slug }}/{{ $post->slug }}">{!! $post->title !!}</a></h4>
+                            <h4><a href="{{ route('blog.post', ['category' => $post->category->slug, 'post' => $post->slug]) }}">{!! $post->title !!}</a></h4>
                             <div class="text">
                                 {{ substr($post->text, 0, 120) }}
                             </div>
