@@ -17,7 +17,7 @@ class ShowHomeTest extends TestCase
 
     public function test_show_homepage()
     {
-        $this->get('/')
+        $this->get(route('home'))
             ->assertSuccessful();
     }
 }

@@ -13,14 +13,14 @@
                     <img src="/img/image.jpg" class="img-fluid" alt="">
 
                     <div class="links text-center">
-                        <a href="/post/{{ $post->category->slug }}" class="category">{!! $post->category->name !!}</a>
+                        <a href="{{ route('blog.category.list' , ['category' => $post->category->slug]) }}" class="category">{!! $post->category->name !!}</a>
                     </div>
 
                     <h1 class="text-center">{!! $post->title !!}</h1>
 
                     <div class="tags text-center">
                         @foreach($post->tags as $tag)
-                            <a href="/post/tag:{{ $tag->slug }}" class="tag">#{{ $tag->name }}</a>
+                            <a href="{{ route('blog.tag.list', ['tag' => $tag->slug]) }}" class="tag">#{{ $tag->name }}</a>
                         @endforeach
                     </div>
 
@@ -91,9 +91,9 @@
                 @foreach($postLinks as $post)
                     <div class="col-xs col-sm-6 col-md-4">
                         <div class="post">
-                            <a href="/post/{{ $post->category->slug }}/{{ $post->slug }}"><img src="/img/teaser-post.jpg" class="img-fluid"></a>
+                            <a href="{{ route('blog.post', ['category' => $post->category->slug, 'post' => $post->slug]) }}"><img src="/img/teaser-post.jpg" class="img-fluid"></a>
                             <div class="resume">
-                                <h4><a href="/post/{{ $post->category->slug }}/{{ $post->slug }}">{!! $post->title !!}</a></h4>
+                                <h4><a href="{{ route('blog.post', ['category' => $post->category->slug, 'post' => $post->slug]) }}">{!! $post->title !!}</a></h4>
                                 <div class="text">
                                     {{ substr($post->text, 0, 120) }}
                                 </div>
