@@ -14,11 +14,11 @@ class Tag extends Model
     public $timestamps = false;
 
     public function posts() {
-        return $this->belongsToMany('App\Models\Post');
+        return $this->belongsToMany(Post::class);
     }
 
     public function videos() {
-        return $this->belongsToMany('App\Models\Video');
+        return $this->belongsToMany(Video::class);
     }
 
     public static function removeUnused() {

@@ -13,7 +13,7 @@ class Category extends Model
     protected $sluggable = 'name';
 
     public function posts() {
-        return $this->hasMany('App\Models\Post');
+        return $this->hasMany(Post::class);
     }
 
     /*public function setSlugAttribute($slug)
