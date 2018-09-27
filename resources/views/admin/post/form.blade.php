@@ -38,9 +38,9 @@
 
     <div class="form-group {{ $errors->has('text') ? 'has-error' : '' }}">
         <label class="control-label" for="text">Texte</label>
-        {!!
-            Form::textarea('text', isset($post) ? $post->text : null, ['class' => 'form-control'])
-        !!}
+
+        <textarea name="text">{!! isset($post) ? $post->text : null !!}</textarea>
+
         {!! $errors->first('text', '<span class="help-block">:message</span>') !!}
     </div>
 
@@ -76,6 +76,10 @@
         })
     </script>
 
+    <script>
+        CKEDITOR.replace( 'text' );
+    </script>
+
 @endsection
 
 @push('javascript-libs')
@@ -83,4 +87,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.min.css" />
+
+    <script src="https://cdn.ckeditor.com/4.10.1/standard/ckeditor.js"></script>
+
 @endpush
