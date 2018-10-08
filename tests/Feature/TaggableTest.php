@@ -80,8 +80,9 @@ class TaggableTest extends TestCase
 
     public function test_deleteFromPivotTable() {
         $this->post1->saveTags(' tag1, tag2, tag3');
+        $tag_id = DB::table('tags')->where('name', '=', 'tag1')->first()->id;
         $this->post1->delete();
-        $this->assertEquals(0, DB::table('post_tag')->count());
+        $this->assertEquals(0, DB::table('post_tag')->where('tag_id', "=", $tag_id)->count());
     }
 
 
