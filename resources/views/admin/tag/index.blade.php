@@ -23,7 +23,7 @@
                 <td>{{ $tag->name }}</td>
                 <td>
                     <a href="{{ action('Admin\TagController@edit', $tag) }}" class="btn btn-primary">Editer</a>
-                    <form action="{{ route('tag.destroy', $tag) }}" method="POST">
+                    <form action="{{ route('admin.tag.destroy', $tag) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                         <input type="submit" value="Supprimer" class="btn btn-danger">

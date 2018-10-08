@@ -13,10 +13,10 @@ class Video extends Model
     protected $sluggable = 'title';
 
     public function tags() {
-        return $this->belongsToMany('App\Models\Tag');
+        return $this->belongsToMany(Tag::class);
     }
 
     public function users() {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany(User::class);
     }
 }

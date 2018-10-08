@@ -46,14 +46,14 @@ class TagController extends Controller
 
             if($tag) {
                 flash('Le tag a bien été créé');
-                return redirect(route('tag.edit', $tag));
+                return redirect(route('admin.tag.edit', $tag));
             }
         } catch(\Exception $exception) {
             flash($message, 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
         flash($message, 'warning');
-        return redirect(route('tag.index'));
+        return redirect(route('admin.tag.index'));
     }
 
     /**
@@ -96,14 +96,14 @@ class TagController extends Controller
 
             if($tag) {
                 flash('Le tag a bien été modifié', 'success');
-                return redirect(route('tag.index'));
+                return redirect(route('admin.tag.index'));
             }
         } catch(\Exception $exception) {
             flash($message, 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
         flash($message, 'warning');
-        return redirect(route('tag.index'));
+        return redirect(route('admin.tag.index'));
     }
 
     /**
@@ -120,13 +120,13 @@ class TagController extends Controller
             $tag->delete();
             if($tag) {
                 flash('Le tag a bien été supprimé', 'success');
-                return redirect(route('tag.index'));
+                return redirect(route('admin.tag.index'));
             }
         } catch(\Exception $exception) {
             flash($message, 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
         flash($message, 'warning');
-        return redirect(route('tag.index'));
+        return redirect(route('admin.tag.index'));
     }
 }

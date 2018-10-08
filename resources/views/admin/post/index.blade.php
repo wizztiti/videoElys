@@ -23,11 +23,11 @@
             <tr>
                 <td>{{ $post->id }}</td>
                 <td>{{ $post->title }}</td>
-                <td>{{ $post->slug }}</td>
-                <td>{{ $post->category->name }}</td>
+                <td><a href="{{ route('blog.post', ['category' => $post->category->slug, 'post' => $post->slug]) }}">{{ $post->slug }}</a></td>
+                <td><a href="{{ route('blog.category.list', ['category' => $post->category->slug]) }}">{{ $post->category->name }}</a></td>
                 <td>
                     <a href="{{ action('Admin\PostController@edit', $post) }}" class="btn btn-primary">Editer</a>
-                    <form action="{{ route('post.destroy', $post) }}" method="POST">
+                    <form action="{{ route('admin.post.destroy', $post) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                         <input type="submit" value="Supprimer" class="btn btn-danger">
@@ -35,7 +35,7 @@
                 </td>
                 <td>
                     @foreach($post->tags as $tag)
-                        <a href="{{ route('posts.tag', ['slug' => $tag->slug]) }}" class="badge badge-info">{{ $tag->name }}</a>
+                        <a href="{{ route('blog.tag.list', ['tag' => $tag->slug]) }}" class="badge badge-info">{{ $tag->name }}</a>
                     @endforeach
                 </td>
             </tr>

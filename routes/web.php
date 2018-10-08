@@ -13,30 +13,33 @@
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
+// Authentification
 Auth::routes();
 Route::get('/auth/confirm/{id}/{token}', 'Auth\RegisterController@registerConfirm');
 
-Route::prefix('admin')->group(function () {
+// Affichage liste des articles
+Route::get('/blog', 'PostController@index')->name('blog');
+Route::get('/blog/category:{category}', 'PostController@indexCategory')->name('blog.category.list');
+Route::get('/blog/tag:{tag}', 'PostController@indexTag')->name('blog.tag.list');
+
+// Affichage d'un article
+Route::get('/blog/{category}/{post}', 'PostController@show')->name('blog.post');
+
+
+// BACKEND
+Route::name('admin.')->prefix('admin')->group(function () {
     Route::resource('category', 'Admin\CategoryController');
-});
-Route::prefix('admin')->group(function () {
     Route::resource('post', 'Admin\PostController');
-});
-Route::prefix('admin')->group(function () {
     Route::resource('video', 'Admin\VideoController');
-});
-Route::prefix('admin')->group(function () {
     Route::resource('tag', 'Admin\TagController');
 });
-
-Route::get('/tag/{slug}', 'Admin\PostController@tag')->name('posts.tag');
-
-Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('admin/tag/{slug}', 'Admin\PostController@tag')->name('admin.posts.tag');
 
 // via Middleware Auth
+
+// ACCOUNT USER
 Route::group([
     'middleware' => 'App\Http\Middleware\Auth',
 ], function() {

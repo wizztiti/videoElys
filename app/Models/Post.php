@@ -15,7 +15,11 @@ class Post extends Model
     protected $sluggable = 'title';
 
     public function category() {
-        return $this->belongsTo('App\Models\Category');
+        return $this->belongsTo(Category::class);
+    }
+
+    public function tag() {
+        return $this->belongsTo(Tag::class);
     }
 
     public function author() {

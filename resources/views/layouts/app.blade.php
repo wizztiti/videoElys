@@ -10,6 +10,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    @stack('javascript-libs')
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
@@ -18,9 +22,9 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="main">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
+            <div class="container-fluid">
                 @if(session()->has('notification'))
                     <div class="alert alert-{{ session()->get('notification.type') }}">
                         {{ session()->get('notification.message') }}
@@ -43,6 +47,15 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="">{{ __('Explorer') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('blog') }}">{{ __('Blog') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">{{ __('Contact') }}</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
@@ -73,14 +86,13 @@
             </div>
         </nav>
 
-        <main class="py-4 container">
+        <main class="py-4 container-fluid">
             @yield('content')
         </main>
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    @stack('javascript-libs');
+    <footer>
 
+    </footer>
 </body>
 </html>
