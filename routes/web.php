@@ -28,6 +28,10 @@ Route::get('/blog/tag:{tag}', 'PostController@indexTag')->name('blog.tag.list');
 Route::get('/blog/{category}/{post}', 'PostController@show')->name('blog.post');
 
 
+// Affichage d'une formation
+Route::get('/formation/{category}/{formation}', 'FormationController@show')->name('formation');
+
+
 // BACKEND
 Route::name('admin.')->prefix('admin')->group(function () {
     Route::resource('category', 'Admin\CategoryController');
