@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Formation;
 use Illuminate\Http\Request;
 
 
@@ -16,7 +17,7 @@ class FormationController extends Controller
     public function show($category, $slug)
     {
         return view('public.formation', [
-            'formation' => 'formation-1',
+            'formation' => Formation::where('slug', $slug)->first(),
         ]);
     }
 }
