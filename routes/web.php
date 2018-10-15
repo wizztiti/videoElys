@@ -28,8 +28,8 @@ Route::get('/blog/tag:{tag}', 'PostController@indexTag')->name('blog.tag.list');
 Route::get('/blog/{category}/{post}', 'PostController@show')->name('blog.post');
 
 
-// Affichage liste des articles
-Route::get('/formation', 'FormationController@index')->name('blog');
+// Affichage liste des formations
+Route::get('/formation', 'FormationController@index')->name('formation');
 Route::get('/formation/category:{category}', 'FormationController@indexCategory')->name('formation.category.list');
 Route::get('/formation/tag:{tag}', 'FormationController@indexTag')->name('formation.tag.list');
 
