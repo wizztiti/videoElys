@@ -1,26 +1,26 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Behaviours\Sluggable;
-use App\Behaviours\Taggable;
+//use App\Behaviours\Taggable;
 
 class Formation extends Model
 {
     use Sluggable;
-    use Taggable;
+    //use Taggable;
 
-    protected $fillable = ['title', 'resume', 'category_id', 'slug'];
+    protected $fillable = ['title', 'resume', 'category_id', 'slug', 'teaser_path'];
     protected $sluggable = 'title';
 
     public function category() {
         return $this->belongsTo(Category::class);
     }
 
-    public function tag() {
+    /*public function tag() {
         return $this->belongsTo(Tag::class);
-    }
+    }*/
 
     public function author() {
         return $this->hasOne('App\Models\Author');
