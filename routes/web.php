@@ -36,6 +36,8 @@ Route::get('/formation/tag:{tag}', 'FormationController@indexTag')->name('format
 // Affichage d'une formation
 Route::get('/formation/{category}/{formation}', 'FormationController@show')->name('formation.show');
 
+// Affichage d'un chapitre de formation
+Route::get('/formation/{category}/{formation}/{chapter}', 'ChapterController@show')->name('chapter.show');
 
 // BACKEND
 Route::name('admin.')->prefix('admin')->group(function () {
@@ -44,6 +46,7 @@ Route::name('admin.')->prefix('admin')->group(function () {
     Route::resource('video', 'Admin\VideoController');
     Route::resource('tag', 'Admin\TagController');
     Route::resource('formation', 'Admin\FormationController');
+    Route::resource('chapter', 'Admin\ChapterController');
 });
 Route::get('admin/tag/{slug}', 'Admin\PostController@tag')->name('admin.posts.tag');
 
