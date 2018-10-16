@@ -48,7 +48,7 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="">{{ __('Explorer') }}</a>
+                                <a class="nav-link" href="{{ route('formation.list') }}">{{ __('Explore') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('blog') }}">{{ __('Blog') }}</a>

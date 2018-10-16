@@ -23,7 +23,7 @@
             <tr>
                 <td>{{ $formation->id }}</td>
                 <td>{{ $formation->title }}</td>
-                <td><a href="{{ route('formation', ['category' => $formation->category->slug, 'formation' => $formation->slug]) }}">{{ $formation->slug }}</a></td>
+                <td><a href="{{ route('formation.list', ['category' => $formation->category->slug, 'formation' => $formation->slug]) }}">{{ $formation->slug }}</a></td>
                 <td><a href="{{ route('formation.category.list', ['category' => $formation->category->slug]) }}">{{ $formation->category->name }}</a></td>
                 <td>
                     <a href="{{ action('Admin\FormationController@edit', $formation) }}" class="btn btn-primary">Editer</a>
