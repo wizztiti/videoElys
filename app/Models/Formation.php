@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+
 use App\Behaviours\Sluggable;
 //use App\Behaviours\Taggable;
 
@@ -16,6 +17,10 @@ class Formation extends Model
 
     public function category() {
         return $this->belongsTo(Category::class);
+    }
+
+    public function chapters() {
+        return $this->hasMany(Chapter::class);
     }
 
     /*public function tag() {

@@ -2,11 +2,11 @@
 
 namespace Tests\Unit\Models;
 
+use App\Models\Chapter;
 use App\Models\Formation;
 use App\Models\Category;
 use Tests\TestCase;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ModelFormationTest extends TestCase
@@ -24,6 +24,7 @@ class ModelFormationTest extends TestCase
         // DEFINI LE NOMBRE DE CATEGORIES & FORMATION POUR CETTE SERIE DE TEST
         $nbr_categories = 3;
         $nbr_formations = 3;
+        $nbr_chapters = 2;
 
         // Création des categories
         for($i = 1; $i <= $nbr_categories; $i++) {
@@ -39,6 +40,12 @@ class ModelFormationTest extends TestCase
             factory(Formation::class)->create(['category_id' => Category::where('id', '=', $categoryIDRandom)->first()]);
         }
         $this->formations = Formation::all();
+
+        // Création des chapitres de formation
+        for($i = 1; $i <= $nbr_chapters; $i++) {
+            factory(Chapter::class)->create(['num' => $i]);
+        }
+
     }
 
     /**
@@ -71,5 +78,14 @@ class ModelFormationTest extends TestCase
         DB::table('formations')->truncate();
         Category::first()->delete();
         $this->assertEquals(2 , Category::count());
+    }
+
+    /**
+     * @test
+     */
+    function test_liaison_Chapters() {
+        Chapter::get()->first()->update([ 'formation_id' => 1]);
+        Chapter::get()->last()->update([ 'formation_id' => 1]);
+        $this->assertEquals( 2, Formation::get()->first()->chapters()->count());
     }
 }

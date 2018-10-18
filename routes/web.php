@@ -36,8 +36,11 @@ Route::get('/formation/tag:{tag}', 'FormationController@indexTag')->name('format
 // Affichage d'une formation
 Route::get('/formation/{category}/{formation}', 'FormationController@show')->name('formation.show');
 
+
+
 // Affichage d'un chapitre de formation
 Route::get('/formation/{category}/{formation}/{chapter}', 'ChapterController@show')->name('chapter.show');
+
 
 // BACKEND
 Route::name('admin.')->prefix('admin')->group(function () {

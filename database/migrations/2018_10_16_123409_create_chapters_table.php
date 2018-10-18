@@ -19,7 +19,7 @@ class CreateChaptersTable extends Migration
             $table->string('title')->unique();
             $table->text('text');
             $table->string('slug')->unique()->index();
-            $table->integer('formation_id')->unsigned()->index();
+            $table->integer('formation_id')->unsigned()->index()->nullable();
             $table->timestamps();
 
             $table->foreign('formation_id')

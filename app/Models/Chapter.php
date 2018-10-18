@@ -9,7 +9,7 @@ class Chapter extends Model
 {
     use Sluggable;
 
-    protected $fillable = ['num', 'title', 'text', 'formation_id', 'slug'];
+    protected $fillable = ['title', 'num',  'text', 'formation_id', 'slug'];
     protected $sluggable = 'title';
 
     public function formation() {
