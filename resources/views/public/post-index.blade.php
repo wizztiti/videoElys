@@ -15,7 +15,7 @@
                         <div class="resume">
                             <h4><a href="{{ route('blog.post', ['category' => $post->category->slug, 'post' => $post->slug]) }}">{!! $post->title !!}</a></h4>
                             <div class="text">
-                                {{ substr($post->text, 0, 120) }}
+                                {!! substr($post->text, 0, 120) !!}
                             </div>
                             <div class="links">
                                 <div class="love"><img src="" alt="">609</div>

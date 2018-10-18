@@ -16,6 +16,10 @@ class Category extends Model
         return $this->hasMany(Post::class);
     }
 
+    public function formations() {
+        return $this->hasMany(Formation::class);
+    }
+
     /*public function setSlugAttribute($slug)
     {
         $this->attributes['slug'] = empty($slug) ? str_slug($this->name) : $slug;

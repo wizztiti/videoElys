@@ -21,6 +21,10 @@ class Tag extends Model
         return $this->belongsToMany(Video::class);
     }
 
+    public function formations() {
+        return $this->belongsToMany(Formation::class);
+    }
+
     public static function removeUnused() {
         return static::where('post_count', 0)->delete();
     }

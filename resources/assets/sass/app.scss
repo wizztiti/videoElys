@@ -11,6 +11,7 @@
 
 $blue-clair: #80c4fe;
 $moutarde : #e5cd3d;
+$moutarde-clair : #faf5da;
 
 //text
 $blue-fonce: #41a5f3;
@@ -46,6 +47,9 @@ body {
         }
     }
 
+    h1 {
+      font-family: serif;
+    }
 
     h3 {
         font-family: serif;
@@ -54,16 +58,13 @@ body {
     }
 
     h4 {
+        font-family: serif;
         font-size: 1.3rem;
         font-weight: bold;
     }
 
-    .post-content {
+    .post-content, .formation-resume {
         color: #000;
-
-        h1 {
-            font-family: serif;
-        }
 
         a {
             color: #000;
@@ -94,6 +95,10 @@ body {
             margin-bottom: 3rem;
             font-size: .9rem;
             color: $creme;
+
+            h4 {
+              font-family: sans-serif;
+            }
 
             .links {
                 div {
@@ -133,6 +138,7 @@ body {
                 padding: 0 1.5rem;
 
                 h4 {
+                    font-family: sans-serif;
                     font-size: 1.3rem;
                     font-weight: bold;
                     margin: .8rem 0;
@@ -161,6 +167,85 @@ body {
         }
     }
 
+
+
+    .formation, .chapter {
+
+        .teaser-video {
+            margin-bottom: 2rem;
+        }
+
+        .resume {
+          margin: 3rem 0;
+          column-count: 2;
+          column-gap: 4rem;
+          text-align: justify;
+
+          hr {
+            border-top: 2px solid $moutarde;
+          }
+
+          .citation {
+              font-family: serif;
+              font-style: italic;
+              font-size: 1.3rem;
+              text-align: left;
+              margin-bottom: 0;
+          }
+        }
+
+      .aside {
+
+        .btn-comprar {
+            background-color: $moutarde;
+            color: white;
+            font-weight: bold;
+            max-width: 260px;
+            margin: 1rem 0 3rem 1rem;
+        }
+
+          .author {
+            background-color: $moutarde-clair;
+            padding: 1.2rem;
+            max-width: 390px;
+            margin-left: 1rem;
+
+            .logo {
+              position: absolute;
+
+              img {
+                height: 2rem;
+              }
+
+            }
+
+
+            .identity {
+              position: relative;
+              right: -48px;
+              top: 4px;
+              font-size: 13px;
+              width: 86%;
+
+              .name {
+                font-weight: bold;
+              }
+            }
+          }
+      }
+
+    }
+
+    .explore {
+
+      h4 {
+        font-size: 1.5rem;
+        font-weight: normal;
+        max-width: 35rem;
+      }
+
+    }
+
     footer {
         background-color: $moutarde;
         height: 120px;
@@ -169,4 +254,6 @@ body {
         bottom: 0;
         left: 0;
     }
+
+
 }

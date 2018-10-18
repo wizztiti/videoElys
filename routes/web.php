@@ -28,12 +28,28 @@ Route::get('/blog/tag:{tag}', 'PostController@indexTag')->name('blog.tag.list');
 Route::get('/blog/{category}/{post}', 'PostController@show')->name('blog.post');
 
 
+// Affichage liste des formations
+Route::get('/formation', 'FormationController@index')->name('formation.list');
+Route::get('/formation/category:{category}', 'FormationController@indexCategory')->name('formation.category.list');
+Route::get('/formation/tag:{tag}', 'FormationController@indexTag')->name('formation.tag.list');
+
+// Affichage d'une formation
+Route::get('/formation/{category}/{formation}', 'FormationController@show')->name('formation.show');
+
+
+
+// Affichage d'un chapitre de formation
+Route::get('/formation/{category}/{formation}/{chapter}', 'ChapterController@show')->name('chapter.show');
+
+
 // BACKEND
 Route::name('admin.')->prefix('admin')->group(function () {
     Route::resource('category', 'Admin\CategoryController');
     Route::resource('post', 'Admin\PostController');
     Route::resource('video', 'Admin\VideoController');
     Route::resource('tag', 'Admin\TagController');
+    Route::resource('formation', 'Admin\FormationController');
+    Route::resource('chapter', 'Admin\ChapterController');
 });
 Route::get('admin/tag/{slug}', 'Admin\PostController@tag')->name('admin.posts.tag');
 

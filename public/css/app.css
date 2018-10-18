@@ -10502,6 +10502,10 @@ body .navbar-light .navbar-nav .nav-link:hover {
           text-decoration-line: underline;
 }
 
+body h1 {
+  font-family: serif;
+}
+
 body h3 {
   font-family: serif;
   font-size: 2rem;
@@ -10509,35 +10513,38 @@ body h3 {
 }
 
 body h4 {
+  font-family: serif;
   font-size: 1.3rem;
   font-weight: bold;
 }
 
-body .post-content {
+body .post-content,
+body .formation-resume {
   color: #000;
 }
 
-body .post-content h1 {
-  font-family: serif;
-}
-
-body .post-content a {
+body .post-content a,
+body .formation-resume a {
   color: #000;
 }
 
-body .post-content .img-fluid {
+body .post-content .img-fluid,
+body .formation-resume .img-fluid {
   padding-bottom: 1rem;
 }
 
-body .post-content .links {
+body .post-content .links,
+body .formation-resume .links {
   padding: 1rem 0;
 }
 
-body .post-content .tags .tag {
+body .post-content .tags .tag,
+body .formation-resume .tags .tag {
   padding: 0 0.2rem;
 }
 
-body .post-content .text {
+body .post-content .text,
+body .formation-resume .text {
   padding: 2rem 0;
 }
 
@@ -10547,6 +10554,10 @@ body .aside .video {
   margin-bottom: 3rem;
   font-size: .9rem;
   color: #f1f8fe;
+}
+
+body .aside .video h4 {
+  font-family: sans-serif;
 }
 
 body .aside .video .links div {
@@ -10585,6 +10596,7 @@ body .post-links .post .resume {
 }
 
 body .post-links .post .resume h4 {
+  font-family: sans-serif;
   font-size: 1.3rem;
   font-weight: bold;
   margin: .8rem 0;
@@ -10604,6 +10616,82 @@ body .post-links .post .resume .links {
 
 body .post-links .post .resume .links div {
   display: inline-block;
+}
+
+body .formation .teaser-video,
+body .chapter .teaser-video {
+  margin-bottom: 2rem;
+}
+
+body .formation .resume,
+body .chapter .resume {
+  margin: 3rem 0;
+  -webkit-column-count: 2;
+          column-count: 2;
+  -webkit-column-gap: 4rem;
+          column-gap: 4rem;
+  text-align: justify;
+}
+
+body .formation .resume hr,
+body .chapter .resume hr {
+  border-top: 2px solid #e5cd3d;
+}
+
+body .formation .resume .citation,
+body .chapter .resume .citation {
+  font-family: serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+body .formation .aside .btn-comprar,
+body .chapter .aside .btn-comprar {
+  background-color: #e5cd3d;
+  color: white;
+  font-weight: bold;
+  max-width: 260px;
+  margin: 1rem 0 3rem 1rem;
+}
+
+body .formation .aside .author,
+body .chapter .aside .author {
+  background-color: #faf5da;
+  padding: 1.2rem;
+  max-width: 390px;
+  margin-left: 1rem;
+}
+
+body .formation .aside .author .logo,
+body .chapter .aside .author .logo {
+  position: absolute;
+}
+
+body .formation .aside .author .logo img,
+body .chapter .aside .author .logo img {
+  height: 2rem;
+}
+
+body .formation .aside .author .identity,
+body .chapter .aside .author .identity {
+  position: relative;
+  right: -48px;
+  top: 4px;
+  font-size: 13px;
+  width: 86%;
+}
+
+body .formation .aside .author .identity .name,
+body .chapter .aside .author .identity .name {
+  font-weight: bold;
+}
+
+body .explore h4 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  max-width: 35rem;
 }
 
 body footer {
