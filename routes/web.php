@@ -11,6 +11,12 @@
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| Frontend
+|--------------------------------------------------------------------------|
+*/
+
 Route::get('/', function () {
     return view('home');
 })->name('home');
@@ -42,7 +48,14 @@ Route::get('/formation/{category}/{formation}', 'FormationController@show')->nam
 Route::get('/formation/{category}/{formation}/{chapter}', 'ChapterController@show')->name('chapter.show');
 
 
-// BACKEND
+/*
+|--------------------------------------------------------------------------
+| Backend
+|--------------------------------------------------------------------------|
+*/
+
+Route::name('admin')->prefix('admin')->get('/', 'Admin\AdminController@index');
+
 Route::name('admin.')->prefix('admin')->group(function () {
     Route::resource('category', 'Admin\CategoryController');
     Route::resource('post', 'Admin\PostController');

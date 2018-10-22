@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.back')
 
-@section('content')
+@section('main')
 
     @if(isset($chapter))
         <h1>Edition du chapitre</h1>

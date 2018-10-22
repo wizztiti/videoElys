@@ -1,6 +1,6 @@
 @extends('layouts.back')
 
-@section('content')
+@section('main')
 
     <H1>Gestion des articles</H1>
 

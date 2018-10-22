@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.back')
 
-@section('content')
+@section('main')
 
     @if(isset($post))
         <h1>Edition de l'article</h1>

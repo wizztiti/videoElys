@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.back')
 
-@section('content')
+@section('main')
 
     @if(isset($formation))
         <h1>Edition de la formation</h1>

@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.back')
 
-@section('content')
+@section('main')
 
     @if(isset($tag))
         <h1>Edition du tag</h1>

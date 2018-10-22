@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.back')
 
-@section('content')
+@section('main')
 
     <H1>Gestion des catégories</H1>
 
