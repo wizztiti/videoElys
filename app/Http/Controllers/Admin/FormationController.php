@@ -76,8 +76,10 @@ class FormationController extends Controller
      */
     public function edit(Formation $formation)
     {
+        $chapters  =$formation->chapters()->get();
         return view('admin/formation.form', [
-            'formation' => $formation
+            'formation' => $formation,
+            'chapters' => $chapters,
         ]);
     }
 

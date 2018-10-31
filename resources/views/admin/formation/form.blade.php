@@ -59,6 +59,43 @@
         {!! $errors->first('category_id', '<span class="help-block">:message</span>') !!}
     </div>
 
+    <label>Chapitres</label>
+    <div class="box box-primary">
+        <div class="box-header ui-sortable-handle" style="cursor: move;">
+        </div>
+
+        <div class="box-body">
+            <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+            <ul class="todo-list ui-sortable" data-widget="todo-list">
+
+                @foreach($chapters as $chapter)
+                <li class="" style="">
+                    <!-- drag handle -->
+                    <span class="handle ui-sortable-handle">
+                        <i class="fa fa-ellipsis-v"></i>
+                        <i class="fa fa-ellipsis-v"></i>
+                      </span>
+                    <!-- checkbox -->
+                    <input type="checkbox" value="">
+                    <!-- todo text -->
+                    <span class="text">{{ $chapter->title }}</span>
+                    <!-- Emphasis label -->
+                    <small class="label><i class="fa fa-clock-o"></i></small>
+                    <!-- General tools such as edit or delete-->
+                    <div class="tools">
+                        <i class="fa fa-edit"></i>
+                        <i class="fa fa-trash-o"></i>
+                    </div>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer clearfix no-border">
+            <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+        </div>
+    </div>
+
     <!--div class="form-group {{ $errors->has('tags') ? 'has-error' : '' }}">
         <label class="control-label" for="tags">Tags</label>
         {!!

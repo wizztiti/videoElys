@@ -341,10 +341,25 @@ desired effect
 
 <!-- jQuery 3 -->
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
 <!-- Bootstrap 3.3.7 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="/adminlte/js/require.js"></script>
+
+<!-- Bootstrap WYSIHTML5 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-wysiwyg/0.3.3/amd/bootstrap3-wysihtml5.all.min.js"></script>
+
+
 <!-- AdminLTE App -->
 <script src="/adminlte/js/adminlte.min.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="/adminlte/js/pages/dashboard.js"></script>
 
 @yield('js')
 
