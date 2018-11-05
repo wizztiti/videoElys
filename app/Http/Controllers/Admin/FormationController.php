@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\FormationRequest;
+use App\Models\Category;
+use App\Models\Chapter;
 use App\Models\Formation;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
@@ -28,7 +30,9 @@ class FormationController extends Controller
      */
     public function create()
     {
-        return view('admin.formation.form');
+        return view('admin.formation.form', [
+            'categories' => Category::all(),
+        ]);
     }
 
     /**
@@ -76,9 +80,10 @@ class FormationController extends Controller
      */
     public function edit(Formation $formation)
     {
-        $chapters  =$formation->chapters()->get();
+        $chapters = $formation->chapters()->get()->sortBy('num');
         return view('admin/formation.form', [
             'formation' => $formation,
+            'categories' => Category::all(),
             'chapters' => $chapters,
         ]);
     }
@@ -92,9 +97,11 @@ class FormationController extends Controller
      */
     public function update(FormationRequest $request, Formation $formation)
     {
-        $message = 'Problème lors de la modification de la formation'   ;
+        $message = 'Problème lors de la modification de la formation';
 
         try {
+            $this->setSummary($request, $formation);
+
             $formation->update($request->only('title', 'resume', 'slug', 'category_id', 'teaser_path'));
             //$formation->saveTags($request->get('tags'));
 
@@ -132,5 +139,18 @@ class FormationController extends Controller
         }
         flash($message, 'warning');
         return redirect(route('admin.formation.index'));
+    }
+
+    public function setSummary(FormationRequest $request, Formation $formation) {
+        // Définition du sommaire
+        $summary = $request->summary;
+        $formation->chapters()->each(function($chapter, $key) {
+            $chapter->update(['num' => 0]);
+        });
+        if($summary){
+            foreach ($summary as $index => $IDchapter) {
+                Chapter::where('id', '=', $IDchapter)->update(['num' => $index]);
+            }
+        }
     }
 }

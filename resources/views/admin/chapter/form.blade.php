@@ -48,7 +48,11 @@
         <label class="control-label" for="formation_id">Formation</label>
 
         {!!
-            Form::select('formation_id', \App\Models\Formation::all()->pluck('title', 'id'), null,  ['class' => 'form-control'] )
+            Form::select(
+                'formation_id',
+                $formations->pluck('title', 'id'),
+                isset($chapter) ? $chapter->formation->id : null,
+                ['class' => 'form-control'] )
         !!}
         {!! $errors->first('formation_id', '<span class="help-block">:message</span>') !!}
     </div>

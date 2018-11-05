@@ -151,6 +151,8 @@ class ChapterControllerTest extends TestCase
      */
     public function test_Admin_ChapterController_Edit()
     {
+        $this->withoutExceptionHandling();
+
         // Act
         $response = $this->get(action('Admin\ChapterController@edit', Chapter::first()));
 

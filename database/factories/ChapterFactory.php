@@ -10,6 +10,6 @@ $factory->define(Chapter::class, function (Faker $faker) {
         'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'text' => $faker->text,
         'slug' => $faker->slug,
-        'formation_id' => null
+        'formation_id' => 1
     ];
 });

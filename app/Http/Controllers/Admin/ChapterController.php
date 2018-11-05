@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\ChapterRequest;
+use App\Models\Formation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Chapter;
@@ -30,7 +31,9 @@ class ChapterController extends Controller
      */
     public function create()
     {
-        return view('admin.chapter.form');
+        return view('admin.chapter.form', [
+            'formations' => Formation::all(),
+        ]);
     }
 
     /**
@@ -70,6 +73,7 @@ class ChapterController extends Controller
     public function edit(Chapter $chapter)
     {
         return view('admin/chapter.form', [
+            'formations' => Formation::all(),
             'chapter' => $chapter
         ]);
     }

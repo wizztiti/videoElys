@@ -54,7 +54,11 @@
     <div class="form-group {{ $errors->has('category_id') ? 'has-error' : '' }}">
         <label class="control-label" for="category_id">Catégorie</label>
         {!!
-            Form::select('category_id', \App\Models\Category::all()->pluck('name', 'id'), null,  ['class' => 'form-control'] )
+            Form::select(
+                'category_id',
+                $categories->pluck('name', 'id'),
+                isset($formation) ? $formation->category->id : null,
+                ['class' => 'form-control'] )
         !!}
         {!! $errors->first('category_id', '<span class="help-block">:message</span>') !!}
     </div>
@@ -67,32 +71,33 @@
         <div class="box-body">
             <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
             <ul class="todo-list ui-sortable" data-widget="todo-list">
-
-                @foreach($chapters as $chapter)
-                <li class="" style="">
-                    <!-- drag handle -->
-                    <span class="handle ui-sortable-handle">
+                @if(isset($chapters))
+                    @foreach($chapters as $chapter)
+                        <li class="" style="">
+                            <!-- drag handle -->
+                            <span class="handle ui-sortable-handle">
                         <i class="fa fa-ellipsis-v"></i>
                         <i class="fa fa-ellipsis-v"></i>
                       </span>
-                    <!-- checkbox -->
-                    <input type="checkbox" value="">
-                    <!-- todo text -->
-                    <span class="text">{{ $chapter->title }}</span>
-                    <!-- Emphasis label -->
-                    <small class="label><i class="fa fa-clock-o"></i></small>
-                    <!-- General tools such as edit or delete-->
-                    <div class="tools">
-                        <i class="fa fa-edit"></i>
-                        <i class="fa fa-trash-o"></i>
-                    </div>
-                </li>
-                @endforeach
+                            <!-- todo text -->
+                            <span class="text">{{ $chapter->title }}</span>
+
+                            <input type="hidden" name="summary[]" value="{{ $chapter->id }}">
+                            <!-- Emphasis label -->
+                            <small class="label><i class="fa fa-clock-o"></i></small>
+                            <!-- General tools such as edit or delete-->
+                            <div class="tools">
+                                <i class="fa fa-edit"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                        </li>
+                    @endforeach
+                @endif
             </ul>
         </div>
         <!-- /.box-body -->
         <div class="box-footer clearfix no-border">
-            <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+            <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add chapter</button>
         </div>
     </div>
 
