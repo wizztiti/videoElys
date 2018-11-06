@@ -1,13 +1,14 @@
 @extends('layouts.back')
 
-@section('main')
-
+@section('pageTitle')
     @if(isset($chapter))
         <h1>Edition du chapitre</h1>
     @else
         <h1>Nouveau chapitre</h1>
     @endif
+@endsection
 
+@section('main')
     {!!
         Form::open([
             'url' => isset($chapter)

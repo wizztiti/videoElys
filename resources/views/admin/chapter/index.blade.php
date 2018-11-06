@@ -1,9 +1,10 @@
 @extends('layouts.back')
 
+@section('pageTitle')
+    <h1>Gestion des chapitres</h1>
+@endsection
+
 @section('main')
-
-    <H1>Gestion des chapitres</H1>
-
     <p class="text-right">
         <a href="{{ action('Admin\ChapterController@create') }}" class="btn btn-primary">Ajouter un chapitre</a>
     </p>

@@ -1,9 +1,10 @@
 @extends('layouts.back')
 
+@section('pageTitle')
+    <h1>Gestion des tags</h1>
+@endsection
+
 @section('main')
-
-    <H1>Gestion des tags</H1>
-
     <p class="text-right">
         <a href="{{ action('Admin\TagController@create') }}" class="btn btn-primary">Ajouter un tag</a>
     </p>

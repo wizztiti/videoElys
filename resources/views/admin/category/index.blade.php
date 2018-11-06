@@ -1,9 +1,10 @@
 @extends('layouts.back')
 
+@section('pageTitle')
+    <h1>Gestion des catégories</h1>
+@endsection
+
 @section('main')
-
-    <H1>Gestion des catégories</H1>
-
     <p class="text-right">
         <a href="{{ action('Admin\CategoryController@create') }}" class="btn btn-primary">Ajouter une catégorie</a>
     </p>

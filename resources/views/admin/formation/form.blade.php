@@ -1,12 +1,14 @@
 @extends('layouts.back')
 
-@section('main')
-
+@section('pageTitle')
     @if(isset($formation))
         <h1>Edition de la formation</h1>
     @else
         <h1>Nouvelle formation</h1>
     @endif
+@endsection
+
+@section('main')
 
     {!!
         Form::open([
@@ -97,7 +99,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer clearfix no-border">
-            <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add chapter</button>
+            <a href="{{ route('admin.chapter.create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add chapter</a>
         </div>
     </div>
 

@@ -1,9 +1,10 @@
 @extends('layouts.back')
 
+@section('pageTitle')
+    <h1>Gestion des articles</h1>
+@endsection
+
 @section('main')
-
-    <H1>Gestion des articles</H1>
-
     <p class="text-right">
         <a href="{{ action('Admin\PostController@create') }}" class="btn btn-primary">Ajouter un article</a>
     </p>

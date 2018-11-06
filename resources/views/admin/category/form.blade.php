@@ -1,12 +1,16 @@
 @extends('layouts.back')
 
-@section('main')
-
+@section('pageTitle')
     @if(isset($category))
         <h1>Edition de la catégorie</h1>
     @else
         <h1>Nouvelle catégorie</h1>
     @endif
+@endsection
+
+@section('main')
+
+
 
     {!!
         Form::open([

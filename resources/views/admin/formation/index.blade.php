@@ -1,8 +1,11 @@
 @extends('layouts.back')
 
-@section('main')
+@section('pageTitle')
+    <h1>Gestion des formations</h1>
+@endsection
 
-    <H1>Gestion des formations</H1>
+@section('main')
+<div class="adminFormations">
 
     <p class="text-right">
         <a href="{{ action('Admin\FormationController@create') }}" class="btn btn-primary">Ajouter une formation</a>
@@ -42,4 +45,7 @@
         @endforeach
         </tbody>
     </table>
+
+</div>
+
 @endsection
