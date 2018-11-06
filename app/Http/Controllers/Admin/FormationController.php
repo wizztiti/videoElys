@@ -51,7 +51,7 @@ class FormationController extends Controller
 
             if($formation) {
                 flash('La formation a bien été créée');
-                return redirect(route('admin.formation.index', $formation));
+                return redirect(route('admin.formation.index'));
             }
         } catch(\Exception $exception) {
             flash($message, 'warning');

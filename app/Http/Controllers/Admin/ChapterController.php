@@ -37,6 +37,19 @@ class ChapterController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createInFormation(Formation $formation)
+    {
+        return view('admin.chapter.form', [
+            'formations' => Formation::all(),
+            'formation' => $formation,
+        ]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  ChapterRequest $request
@@ -54,7 +67,7 @@ class ChapterController extends Controller
 
             if($chapter) {
                 flash('Le chapitre a bien été créé');
-                return redirect(route('admin.chapter.index', $chapter));
+                return redirect(route('admin.formation.edit', $chapter->formation));
             }
         } catch(\Exception $exception) {
             flash($message, 'warning');

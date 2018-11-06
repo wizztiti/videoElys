@@ -52,7 +52,7 @@
             Form::select(
                 'formation_id',
                 $formations->pluck('title', 'id'),
-                isset($chapter) ? $chapter->formation->id : null,
+                isset($chapter) ? $chapter->formation->id : (isset($formation) ? $formation->id : null),
                 ['class' => 'form-control'] )
         !!}
         {!! $errors->first('formation_id', '<span class="help-block">:message</span>') !!}
