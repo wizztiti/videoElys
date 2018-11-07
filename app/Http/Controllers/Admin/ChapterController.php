@@ -31,21 +31,11 @@ class ChapterController extends Controller
      */
     public function create()
     {
-        return view('admin.chapter.form', [
-            'formations' => Formation::all(),
-        ]);
-    }
+        $formation = Formation::find(request('formation'));
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function createInFormation(Formation $formation)
-    {
         return view('admin.chapter.form', [
-            'formations' => Formation::all(),
             'formation' => $formation,
+            'formations' => Formation::all(),
         ]);
     }
 

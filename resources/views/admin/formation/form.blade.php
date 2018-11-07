@@ -100,7 +100,7 @@
         <!-- /.box-body -->
         <div class="box-footer clearfix no-border">
             @if(isset($formation))
-                <a href="{{ route('admin.chapter.createInFormation', ['formation' => $formation]) }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add chapter</a>
+                <a href="{{ route('admin.chapter.create', ['formation' => $formation]) }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add chapter</a>
             @endif
         </div>
     </div>

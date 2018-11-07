@@ -65,7 +65,7 @@ Route::name('admin.')->prefix('admin')->group(function () {
     Route::resource('chapter', 'Admin\ChapterController');
 });
 Route::get('admin/tag/{slug}', 'Admin\PostController@tag')->name('admin.posts.tag');
-Route::get('admin/chapter/create/formation/{formation}', 'Admin\ChapterController@createInFormation')->name('admin.chapter.createInFormation');
+
 // via Middleware Auth
 
 // ACCOUNT USER
