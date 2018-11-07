@@ -100,7 +100,7 @@ class FormationController extends Controller
         $message = 'Problème lors de la modification de la formation';
 
         try {
-            $this->setSummary($request, $formation);
+            $formation->setSummary($request, $formation);
 
             $formation->update($request->only('title', 'resume', 'slug', 'category_id', 'teaser_path'));
             //$formation->saveTags($request->get('tags'));
@@ -139,18 +139,5 @@ class FormationController extends Controller
         }
         flash($message, 'warning');
         return redirect(route('admin.formation.index'));
-    }
-
-    public function setSummary(FormationRequest $request, Formation $formation) {
-        // Définition du sommaire
-        $summary = $request->summary;
-        $formation->chapters()->each(function($chapter, $key) {
-            $chapter->update(['num' => 0]);
-        });
-        if($summary){
-            foreach ($summary as $index => $IDchapter) {
-                Chapter::where('id', '=', $IDchapter)->update(['num' => $index]);
-            }
-        }
     }
 }
