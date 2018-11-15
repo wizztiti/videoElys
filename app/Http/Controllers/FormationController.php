@@ -30,8 +30,12 @@ class FormationController extends Controller
      */
     public function show($category, $slug)
     {
+        $formation = Formation::where('slug', $slug)->first();
+        $chapters = $formation->chapters()->get()->sortBy('num');
+
         return view('public.formation', [
-            'formation' => Formation::where('slug', $slug)->first(),
+            'formation' => $formation,
+            'chapters' => $chapters
         ]);
     }
 

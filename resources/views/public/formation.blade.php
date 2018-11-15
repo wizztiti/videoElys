@@ -32,6 +32,19 @@
                         </p-->
                     </div>
                 </div>
+                <div class="sumary">
+                    <h2>Sumary</h2>
+                        @foreach($chapters as $chapter)
+                            <div class="sumary_item">
+                                <a href="{{ route('chapter.show', [
+                                'category' => $formation->category,
+                                'formation' => $formation,
+                                'chapter' => $chapter->slug,
+                            ]) }}">{{ $chapter->title }}</a>
+                            </div>
+
+                        @endforeach
+                </div>
             </div>
             <div class="col-lg-4">
                 <section class="aside">

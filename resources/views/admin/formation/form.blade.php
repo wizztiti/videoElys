@@ -89,14 +89,21 @@
                             <small class="label><i class="fa fa-clock-o"></i></small>
                             <!-- General tools such as edit or delete-->
                             <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
+                                <a href="{{ route('admin.chapter.edit', ['chapter' => $chapter]) }}"><i class="fa fa-edit"></i></a>
+                                <i class="fa fa-trash-o toogle-chapter-remove"></i>
                             </div>
                         </li>
                     @endforeach
                 @endif
             </ul>
         </div>
+        <script>
+            $('.toogle-chapter-remove').on('click', function(e){
+                e.preventDefault();
+                $(this).parent().parent().remove();
+            });
+
+        </script>
         <!-- /.box-body -->
         <div class="box-footer clearfix no-border">
             @if(isset($formation))

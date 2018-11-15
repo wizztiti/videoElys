@@ -237,6 +237,13 @@ desired effect
 
     <!-- Main content -->
     <section class="content container-fluid">
+
+      @if(session()->has('notification'))
+        <div class="alert alert-{{ session()->get('notification.type') }}">
+          {{ session()->get('notification.message') }}
+        </div>
+      @endif
+
       @yield('main')
     </section>
     <!-- /.content -->

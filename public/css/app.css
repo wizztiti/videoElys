@@ -10647,6 +10647,30 @@ body .chapter .resume .citation {
   margin-bottom: 0;
 }
 
+body .formation .sumary .sumary_item,
+body .chapter .sumary .sumary_item {
+  padding: 10px;
+  border-bottom: 1px solid #ececec;
+}
+
+body .formation .sumary .sumary_item:nth-child(2n),
+body .chapter .sumary .sumary_item:nth-child(2n) {
+  background-color: #f9f9f9;
+}
+
+body .formation .sumary .sumary_item a,
+body .chapter .sumary .sumary_item a {
+  display: block;
+  color: #000;
+  text-decoration: none;
+  font-weight: 300;
+}
+
+body .formation .sumary .sumary_item a:hover,
+body .chapter .sumary .sumary_item a:hover {
+  color: #e5cd3d;
+}
+
 body .formation .aside .btn-comprar,
 body .chapter .aside .btn-comprar {
   background-color: #e5cd3d;

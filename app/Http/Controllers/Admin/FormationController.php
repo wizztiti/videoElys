@@ -100,21 +100,30 @@ class FormationController extends Controller
         $message = 'Problème lors de la modification de la formation';
 
         try {
-            $formation->setSummary($request, $formation);
-
             $formation->update($request->only('title', 'resume', 'slug', 'category_id', 'teaser_path'));
             //$formation->saveTags($request->get('tags'));
 
-            if($formation) {
-                flash('La formation a bien été modifiée', 'success');
-                return redirect(route('admin.formation.index'));
+            // Delete chapters removed
+            $deletedIds = array_diff($formation->chapters->pluck('id')->toArray(), $request->summary);
+            if($deletedIds) {
+                Chapter::whereIn('id', $deletedIds)->delete();
             }
+
+            // update all chapter->num
+            if(is_array($request->summary)) {
+                foreach($request->summary as $index => $id) {
+                    Chapter::where('id', '=', $id)->update(['num' => $index]);
+                }
+            }
+
+            flash('La formation a bien été modifiée', 'success');
+
         } catch(\Exception $exception) {
             flash($message, 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
-        flash($message, 'warning');
-        return redirect(route('admin.formation.index'));
+
+        return redirect(route('admin.formation.edit', $formation->id));
     }
 
     /**
@@ -140,4 +149,5 @@ class FormationController extends Controller
         flash($message, 'warning');
         return redirect(route('admin.formation.index'));
     }
+
 }

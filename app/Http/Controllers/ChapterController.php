@@ -13,11 +13,11 @@ class ChapterController extends Controller
      * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($category, $slug)
+    public function show($category, $formation, $slug)
     {
-
+        $chapter = Chapter::where('slug', '=' , $slug)->first();
         return view('public.chapter', [
-            'chapter' => Chapter::where('slug', $slug)->first(),
+            'chapter' => Chapter::where('slug', '=' ,$slug)->first(),
         ]);
 
     }

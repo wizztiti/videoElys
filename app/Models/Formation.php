@@ -32,18 +32,4 @@ class Formation extends Model
         return $this->hasOne('App\Models\Author');
     }
 
-
-    public function setSummary(FormationRequest $request, Formation $formation) {
-        // Définition du sommaire
-        $summary = $request->summary;
-        $formation->chapters()->each(function($chapter, $key) {
-            $chapter->update(['num' => 0]);
-        });
-        if($summary){
-            foreach ($summary as $index => $IDchapter) {
-                Chapter::where('id', '=', $IDchapter)->update(['num' => $index]);
-            }
-        }
-    }
-
 }

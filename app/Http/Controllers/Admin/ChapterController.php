@@ -48,10 +48,11 @@ class ChapterController extends Controller
     public function store(ChapterRequest $request)
     {
         $message = 'Problème lors de la création du chapitre';
+        $formationId = $request->formation_id;
 
         try {
             $request = $request->only('title', 'text', 'slug', 'formation_id');
-            $request['num'] = null;
+            $request['num'] = Formation::find($formationId)->chapters->count();
             $chapter = Chapter::create($request);
             //$post->saveTags($request->get('tags'));
 

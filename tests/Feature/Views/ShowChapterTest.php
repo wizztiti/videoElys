@@ -31,7 +31,7 @@ class ShowChapterTest extends TestCase
      */
     public function test_show_a_chapter()
     {
-        //$this->withExceptionHandling();
+        $this->withExceptionHandling();
 
         $this->get(route('chapter.show', [
             'category' => $this->formation->category->slug,

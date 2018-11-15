@@ -86,6 +86,7 @@ class ChapterControllerTest extends TestCase
             'title' => 'titre du chapitre 1',
             'text' => 'un text tres long du chapitre 1',
             'slug' => null,
+            'formation_id' => $this->formations->first(),
         ]);
         $controller = new ChapterController();
 
@@ -95,7 +96,6 @@ class ChapterControllerTest extends TestCase
 
         // Assert
         $this->assertEquals(302, $response->getStatusCode());
-        $this->assertNotNull($chapter);
     }
 
     /**
