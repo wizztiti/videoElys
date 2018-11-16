@@ -41,16 +41,18 @@
     <div class="form-group {{ $errors->has('resume') ? 'has-error' : '' }}">
         <label class="control-label" for="text">Résumé</label>
 
-        <textarea name="resume">{!! isset($formation) ? $formation->resume : null !!}</textarea>
+        <textarea name="resume">{!! isset($formation) ? $formation->resume : old('resume') !!}</textarea>
 
         {!! $errors->first('resume', '<span class="help-block">:message</span>') !!}
     </div>
 
-    <div class="form-group">
+    <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
         <label class="control-label" for="teaser_path">Teaser Url</label>
         {!!
             Form::text('teaser_path', isset($formation) ? $formation->teaser_path : null, ['class' => 'form-control'])
         !!}
+
+        {!! $errors->first('teaser_path', '<span class="help-block">:message</span>') !!}
     </div>
 
     <div class="form-group {{ $errors->has('category_id') ? 'has-error' : '' }}">
@@ -63,6 +65,14 @@
                 ['class' => 'form-control'] )
         !!}
         {!! $errors->first('category_id', '<span class="help-block">:message</span>') !!}
+    </div>
+
+    <div class="form-group {{ $errors->has('tags') ? 'has-error' : '' }}">
+        <label class="control-label" for="tags">Tags</label>
+        {!!
+            Form::text('tags', isset($formation) ? $formation->tagsList : null, ['class' => 'form-control', 'id' => 'tokenfield'])
+        !!}
+        {!! $errors->first('tags', '<span class="help-block">:message</span>') !!}
     </div>
 
     <label>Chapitres</label>
@@ -126,7 +136,7 @@
 
     {!! Form::close() !!}
 
-    <!--script>
+    <script>
         $('#tokenfield').tokenfield({
             autocomplete: {
                 source: "/api/tags",
@@ -134,7 +144,7 @@
             },
             showAutocompleteOnFocus: true
         })
-    </script-->
+    </script>
 
     <script>
         CKEDITOR.replace( 'resume' );

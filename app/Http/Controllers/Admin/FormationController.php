@@ -43,21 +43,29 @@ class FormationController extends Controller
      */
     public function store(FormationRequest $request)
     {
-        $message = 'Problème lors de la création de la formation'   ;
+        $message = 'Problème lors de la création de la formation';
 
         try {
-            $formation = Formation::create($request->only('title', 'resume', 'slug', 'category_id', 'teaser_path'));
+            $formation = Formation::create($request->only(
+                'title',
+                'resume',
+                'slug',
+                'category_id',
+                'teaser_path'
+            ));
+
             //$post->saveTags($request->get('tags'));
 
             if($formation) {
                 flash('La formation a bien été créée');
-                return redirect(route('admin.formation.index'));
+                return redirect(route('admin.formation.edit', $formation->id));
             }
         } catch(\Exception $exception) {
-            flash($message, 'warning');
+            flash($exception->getMessage(), 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
-        flash($message, 'warning');
+
+        //flash($message, 'warning');
         return redirect(route('admin.formation.index'));
     }
 
@@ -100,11 +108,20 @@ class FormationController extends Controller
         $message = 'Problème lors de la modification de la formation';
 
         try {
-            $formation->update($request->only('title', 'resume', 'slug', 'category_id', 'teaser_path'));
-            //$formation->saveTags($request->get('tags'));
+            $formation->update($request->only(
+                'title',
+                'resume',
+                'slug',
+                'category_id',
+                'teaser_path'
+            ));
+            $formation->saveTags($request->get('tags'));
 
             // Delete chapters removed
-            $deletedIds = array_diff($formation->chapters->pluck('id')->toArray(), $request->summary);
+            $deletedIds = is_array($request->summary)
+                ? array_diff($formation->chapters->pluck('id')->toArray(), $request->summary)
+                : null;
+
             if($deletedIds) {
                 Chapter::whereIn('id', $deletedIds)->delete();
             }
@@ -119,7 +136,7 @@ class FormationController extends Controller
             flash('La formation a bien été modifiée', 'success');
 
         } catch(\Exception $exception) {
-            flash($message, 'warning');
+            flash($exception->getMessage(), 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
 

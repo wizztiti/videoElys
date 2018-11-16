@@ -42,8 +42,6 @@ Route::get('/formation/tag:{tag}', 'FormationController@indexTag')->name('format
 // Affichage d'une formation
 Route::get('/formation/{category}/{formation}', 'FormationController@show')->name('formation.show');
 
-
-
 // Affichage d'un chapitre de formation
 Route::get('/formation/{category}/{formation}/{chapter}', 'ChapterController@show')->name('chapter.show');
 
@@ -51,7 +49,7 @@ Route::get('/formation/{category}/{formation}/{chapter}', 'ChapterController@sho
 /*
 |--------------------------------------------------------------------------
 | Backend
-|--------------------------------------------------------------------------|
+|--------------------------------------------------------------------------
 */
 
 Route::name('admin')->prefix('admin')->get('/', 'Admin\AdminController@index');

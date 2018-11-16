@@ -32,24 +32,25 @@
                         </p-->
                     </div>
                 </div>
-                <div class="sumary">
-                    <h2>Sumary</h2>
-                        @foreach($chapters as $chapter)
-                            <div class="sumary_item">
-                                <a href="{{ route('chapter.show', [
-                                'category' => $formation->category,
-                                'formation' => $formation,
-                                'chapter' => $chapter->slug,
-                            ]) }}">{{ $chapter->title }}</a>
-                            </div>
 
-                        @endforeach
-                </div>
             </div>
             <div class="col-lg-4">
                 <section class="aside">
 
                     <button type="button" class="btn btn-block btn-comprar">Comprar</button>
+
+                    <div class="sumary">
+                        <h2>Sumary</h2>
+                            @foreach($chapters as $chapter)
+                                <div class="sumary_item">
+                                    <a href="{{ route('chapter.show', [
+                                    'category' => $formation->category->slug,
+                                    'formation' => $formation->slug,
+                                    'chapter' => $chapter->slug,
+                                ]) }}">{{ $chapter->title }}</a>
+                                </div>
+                            @endforeach
+                    </div>
 
                     <div class="author">
                         <div class="logo"><img src="/img/icone-author.jpg" alt=""></div>

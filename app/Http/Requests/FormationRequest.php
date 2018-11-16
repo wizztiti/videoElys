@@ -26,7 +26,8 @@ class FormationRequest extends FormRequest
         return [
             'title' => 'required|min:3',
             'resume' => 'required|min:10',
-            'category_id' => 'required|exists:categories,id'
+            'category_id' => 'required|exists:categories,id',
+            'teaser_path' => 'required'
         ];
     }
 }

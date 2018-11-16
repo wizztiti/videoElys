@@ -9,23 +9,32 @@ class Tag extends Model
 {
     use Sluggable;
 
-    protected $fillable = ['name', 'slug'];
+    protected $fillable = [
+        'name',
+        'slug'
+    ];
+
     protected $sluggable = 'name';
+
     public $timestamps = false;
 
-    public function posts() {
+    public function posts()
+    {
         return $this->belongsToMany(Post::class);
     }
 
-    public function videos() {
+    public function videos()
+    {
         return $this->belongsToMany(Video::class);
     }
 
-    public function formations() {
+    public function formations()
+    {
         return $this->belongsToMany(Formation::class);
     }
 
-    public static function removeUnused() {
+    public static function removeUnused()
+    {
         return static::where('post_count', 0)->delete();
     }
 }
