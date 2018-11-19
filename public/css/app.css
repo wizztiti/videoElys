@@ -10502,20 +10502,25 @@ body .navbar-light .navbar-nav .nav-link:hover {
           text-decoration-line: underline;
 }
 
-body h1 {
-  font-family: serif;
-}
-
 body h3 {
-  font-family: serif;
   font-size: 2rem;
   padding-bottom: 1rem;
 }
 
 body h4 {
-  font-family: serif;
   font-size: 1.3rem;
   font-weight: bold;
+}
+
+body .btn {
+  max-width: 260px;
+  margin: 1rem 0 3rem 1rem;
+}
+
+body .btn-moutarde {
+  color: white;
+  font-weight: bold;
+  background-color: #e5cd3d;
 }
 
 body .post-content,
@@ -10556,10 +10561,6 @@ body .aside .video {
   color: #f1f8fe;
 }
 
-body .aside .video h4 {
-  font-family: sans-serif;
-}
-
 body .aside .video .links div {
   display: inline-block;
 }
@@ -10596,7 +10597,6 @@ body .post-links .post .resume {
 }
 
 body .post-links .post .resume h4 {
-  font-family: sans-serif;
   font-size: 1.3rem;
   font-weight: bold;
   margin: .8rem 0;
@@ -10640,11 +10640,15 @@ body .chapter .resume hr {
 
 body .formation .resume .citation,
 body .chapter .resume .citation {
-  font-family: serif;
   font-style: italic;
   font-size: 1.3rem;
   text-align: left;
   margin-bottom: 0;
+}
+
+body .formation .sumary,
+body .chapter .sumary {
+  margin-bottom: 2rem;
 }
 
 body .formation .sumary .sumary_item,
@@ -10716,6 +10720,10 @@ body .explore h4 {
   font-size: 1.5rem;
   font-weight: normal;
   max-width: 35rem;
+}
+
+body .explore .resume h4 a {
+  color: #000;
 }
 
 body footer {

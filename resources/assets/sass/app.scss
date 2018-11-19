@@ -47,20 +47,26 @@ body {
         }
     }
 
-    h1 {
-      font-family: serif;
-    }
 
     h3 {
-        font-family: serif;
         font-size: 2rem;
         padding-bottom: 1rem;
     }
 
     h4 {
-        font-family: serif;
         font-size: 1.3rem;
         font-weight: bold;
+    }
+
+    .btn {
+      max-width: 260px;
+      margin: 1rem 0 3rem 1rem;
+    }
+
+    .btn-moutarde {
+        color: white;
+        font-weight: bold;
+        background-color: $moutarde;
     }
 
     .post-content, .formation-resume {
@@ -95,10 +101,6 @@ body {
             margin-bottom: 3rem;
             font-size: .9rem;
             color: $creme;
-
-            h4 {
-              font-family: sans-serif;
-            }
 
             .links {
                 div {
@@ -138,7 +140,6 @@ body {
                 padding: 0 1.5rem;
 
                 h4 {
-                    font-family: sans-serif;
                     font-size: 1.3rem;
                     font-weight: bold;
                     margin: .8rem 0;
@@ -186,7 +187,6 @@ body {
           }
 
           .citation {
-              font-family: serif;
               font-style: italic;
               font-size: 1.3rem;
               text-align: left;
@@ -195,6 +195,8 @@ body {
         }
 
       .sumary {
+          margin-bottom: 2rem;
+
          .sumary_item {
            padding: 10px;
            border-bottom: 1px solid #ececec;
@@ -264,6 +266,14 @@ body {
         font-size: 1.5rem;
         font-weight: normal;
         max-width: 35rem;
+      }
+
+      .resume {
+        h4 {
+          a {
+            color: #000;
+          }
+        }
       }
 
     }

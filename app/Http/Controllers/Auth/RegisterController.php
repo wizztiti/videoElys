@@ -34,7 +34,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/register';
 
     private $auth;
 
@@ -58,9 +58,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255|unique:users',
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'address' => 'string',
+            'code-post' => 'string',
+            'city' => 'string',
+            'country' => 'required|string',
+            'accept-condition' => 'required',
         ]);
     }
 
@@ -75,10 +81,16 @@ class RegisterController extends Controller
         $token = str_random(60);
 
         $user = User::create([
-            'name' => $data['name'],
+            'lastname' => $data['lastname'],
+            'firstname' => $data['firstname'],
             'email' => $data['email'],
             'confirmation_token' =>$token,
             'password' => Hash::make($data['password']),
+            'address' => $data['address'],
+            'code-post' => $data['code-post'],
+            'city' => $data['city'],
+            'country' => $data['country'],
+            'newsletter' => $data['newsletter'],
         ]);
 
         Mail::to($user)->send(new registerUser($token, $user));
@@ -95,20 +107,16 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
-        try {
-            $this->validator($request->all())->validate();
+        $this->validator($request->all())->validate();
 
-            event(new Registered($user = $this->create($request->all())));
+        event(new Registered($user = $this->create($request->all())));
 
+        if($user) {
             //$this->guard()->login($user);
-
             flash('Votre compte a bien été créé, mais vous devez le confirmer !');
-            return $this->registered($request, $user);
-        } catch(\Exception $exception) {
-            flash('Votre compte n\'a pas pu être créé', 'warning');
-            Log::warning($exception->getCode() . '  ' . $exception->getMessage());
-            return redirect($this->redirectPath());
         }
+
+        return $this->registered($request, $user);
     }
 
     /**

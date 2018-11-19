@@ -19,11 +19,11 @@
                                 <div class="text">
                                     {!! substr($formation->resume, 0, 120) !!}
                                 </div>
-                                <div class="links">
+                                <!--div class="links">
                                     <div class="love"><img src="" alt="">609</div>
                                     <div class="comments"><img src="" alt="">120</div>
                                     <span class="share">Share</span>
-                                </div>
+                                </div-->
                             </div>
                         </div>
                     </div>
