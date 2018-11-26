@@ -16,8 +16,9 @@
                     <h1>{!! $formation->title !!} </h1>                                   <!--   $formation->title  -->
 
                     <div class="tags">                                            <!--  foreach sur les tags -->
-                        <a href="http://127.0.0.1:8080/blog/tag:acompanyment" class="tag">#acompanyment</a>
-                        <a href="http://127.0.0.1:8080/blog/tag:acompanyment" class="tag">#acompanyment</a>
+                        @foreach($formation->tags as $tag)
+                            <a href="{{ route('formation.tag.list', ['tag' => $tag->slug]) }}" class="tag">#{{ $tag->name }}</a>
+                        @endforeach
                     </div>
 
                     <div class="resume">

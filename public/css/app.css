@@ -10561,6 +10561,10 @@ body .aside .video {
   color: #f1f8fe;
 }
 
+body .aside .video a {
+  color: #FFF;
+}
+
 body .aside .video .links div {
   display: inline-block;
 }

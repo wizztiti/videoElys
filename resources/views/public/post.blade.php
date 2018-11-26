@@ -37,44 +37,23 @@
                     <h3>Videos relacionadas</h3>
 
                     <div class="row">
-                        <div class="col-xs col-sm-6 col-lg-12">
-                            <div class="video">
-                                <h4>Educació respectuosa</h4>
-                                <div class="links">
-                                    <div class="love"><img src="" alt="">609</div>
-                                    <div class="duration"><img src="" alt="">1h10</div>
-                                </div>
-                                <div class="resume">
-                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs col-sm-6 col-lg-12">
-                            <div class="video">
-                                <h4>Educació respectuosa</h4>
-                                <div class="links">
-                                    <div class="love"><img src="" alt="">609</div>
-                                    <div class="duration"><img src="" alt="">1h10</div>
-                                </div>
-                                <div class="resume">
-                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        @foreach($formationLinks as $formation)
+                            <div class="col-xs col-sm-6 col-lg-12">
+                                <div class="video">
+                                    <a href="{{ route('formation.show', [
+                                    'category' => $formation->category->slug,
+                                    'formation' => $formation->slug
+                                    ]) }}"> <h4>{!! $formation->title !!}</h4></a>
+                                    <div class="links">
+                                        <div class="love"><img src="" alt="">609</div>
+                                        <div class="duration"><img src="" alt="">1h10</div>
+                                    </div>
+                                    <div class="resume">
+                                        {!! substr($formation->resume, 0, 70) !!}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-xs col-sm-6 col-lg-12">
-                            <div class="video">
-                                <h4>Educació respectuosa</h4>
-                                <div class="links">
-                                    <div class="love"><img src="" alt="">609</div>
-                                    <div class="duration"><img src="" alt="">1h10</div>
-                                </div>
-                                <div class="resume">
-                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                </div>
-                            </div>
-                        </div>
-
+                        @endforeach
                     </div>
 
                     <div class="image d-none d-lg-block">
@@ -95,7 +74,7 @@
                             <div class="resume">
                                 <h4><a href="{{ route('blog.post', ['category' => $post->category->slug, 'post' => $post->slug]) }}">{!! $post->title !!}</a></h4>
                                 <div class="text">
-                                    {{ substr($post->text, 0, 120) }}
+                                    {!! substr($post->text, 0, 120) !!}
                                 </div>
                                 <div class="links">
                                     <div class="love"><img src="" alt="">609</div>

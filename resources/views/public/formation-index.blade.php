@@ -13,7 +13,13 @@
                 @foreach($formations as $formation)
                     <div class="col-xs col-sm-6 col-md-4">
                         <div class="post">
-                            <a href="{{ route('formation.show', ['category' => $formation->category->slug, 'formation' => $formation->slug]) }}"><img src="/img/teaser-post.jpg" class="img-fluid"></a>
+                            <a href="{{ route('formation.show', [
+                                    'category' => $formation->category->slug,
+                                    'formation' => $formation->slug
+                                    ]) }}">
+                                <img src="/img/teaser-post.jpg" class="img-fluid">
+                            </a>
+
                             <div class="resume">
                                 <h4><a href="{{ route('formation.show', ['category' => $formation->category->slug, 'formation' => $formation->slug]) }}">{!! $formation->title !!}</a></h4>
                                 <div class="text">
