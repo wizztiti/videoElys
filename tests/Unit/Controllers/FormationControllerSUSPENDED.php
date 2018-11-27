@@ -10,7 +10,7 @@ use App\Models\Formation;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class FormationControllerTest extends TestCase
+class FormationControllerSUSPENDED extends TestCase
 {
     use RefreshDatabase;
 

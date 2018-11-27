@@ -8,7 +8,7 @@ use App\Models\Tag;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ModelTagTest extends TestCase
+class ModelTagSUSPENDED extends TestCase
 {
     use RefreshDatabase;
 

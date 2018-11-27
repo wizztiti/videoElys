@@ -12,7 +12,7 @@ use App\Models\Category;
 use App\Models\Formation;
 use App\Models\Tag;
 
-class ChapterControllerTest extends TestCase
+class ChapterControllerSUSPENDED extends TestCase
 {
     use RefreshDatabase;
 
