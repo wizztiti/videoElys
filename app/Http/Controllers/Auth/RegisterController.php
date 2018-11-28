@@ -93,7 +93,8 @@ class RegisterController extends Controller
             'newsletter' => $data['newsletter'],
         ]);
 
-        Mail::to($user)->send(new registerUser($token, $user));
+        /* A ACTIVER APRES CONFIGURATION MAIL DU SERVEUR */
+        //Mail::to($user)->send(new registerUser($token, $user));
 
         return $user;
 
