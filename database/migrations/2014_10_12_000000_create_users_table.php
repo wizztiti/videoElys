@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('firstname');
             $table->string('address');
-            $table->string('code-post');
+            $table->string('postal_code');
             $table->string('city');
             $table->string('country');
             $table->boolean('newsletter')->default(false);

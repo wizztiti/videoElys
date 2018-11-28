@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ResetsPasswords;
@@ -23,7 +24,17 @@ class AccountController extends Controller
 
     public function accueil()
     {
-        return view('userBoard.my-account');
+        $user = $this->auth->user();
+        return view('userBoard.my-account', compact('user'));
+    }
+
+    public function update(Request $request) {
+        $user = $this->auth->user();
+        $user->update($request->only('lastname', 'firstname', 'email', 'address', 'postal_code',
+            'city', 'country'));
+        $user->newsletter = request('newsletter');
+        $user->save();
+        return redirect(route('my-account'));
     }
 
     public function showFormPassword()
@@ -41,7 +52,7 @@ class AccountController extends Controller
             ->update(['password' => $password]);
         return redirect()->route('my-account ');
     }
-    
+
     /**
      * Get the password reset validation rules.
      *

@@ -70,7 +70,8 @@ Route::get('admin/tag/{slug}', 'Admin\PostController@tag')->name('admin.posts.ta
 Route::group([
     'middleware' => 'App\Http\Middleware\Auth',
 ], function() {
-    Route::get('/my-account', 'AccountController@accueil')->name('my-account ');
+    Route::get('my-account', 'AccountController@accueil')->name('my-account');
+    Route::post('my-account', 'AccountController@update')->name('account.update');
     Route::get('userBoard.passwordForm', 'AccountController@showFormPassword');
     Route::post('userBoard.passwordForm', 'AccountController@updatePassword');
 });

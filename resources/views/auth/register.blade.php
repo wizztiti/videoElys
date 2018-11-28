@@ -83,13 +83,13 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     {!!
-                        Form::number('code-post', null, [
+                        Form::number('postal_code', null, [
                             'class' => 'form-control',
                             'placeholder' => 'Codigo postal',
                             'required' => 'required',
                         ])
                     !!}
-                    {!! $errors->first('code-post', '<span class="help-block">:message</span>') !!}
+                    {!! $errors->first('postal_code', '<span class="help-block">:message</span>') !!}
                 </div>
 
                 <div class="form-group col-md-6">
