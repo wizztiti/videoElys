@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Chapter;
 use App\Models\Formation;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class FormationController extends Controller
@@ -136,7 +137,7 @@ class FormationController extends Controller
             flash('La formation a bien été modifiée', 'success');
 
         } catch(\Exception $exception) {
-            flash($exception->getMessage(), 'warning');
+            flash($message, 'warning');
             Log::warning($exception->getCode() . '  ' . $exception->getMessage());
         }
 

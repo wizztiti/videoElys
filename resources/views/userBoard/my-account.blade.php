@@ -116,7 +116,7 @@
 
                 <div class="form-group mb-0">
                     <div>
-                        {{ Form::hidden('newsletter', 0 )}}
+
                         <p><input type="checkbox" name="newsletter" value="1" @if ($user->newsletter == 1)
                             checked @endif> Acepto recibir noticias de la newsletter</p>
 
