@@ -20,7 +20,7 @@
 
                     <div class="tags text-center">
                         @foreach($post->tags as $tag)
-                            <a href="{{ route('blog.tag.list', ['tag' => $tag->slug]) }}" class="tag">#{{ $tag->name }}</a>
+                            <a href="{{ route('tag.list', ['tag' => $tag->slug]) }}" class="tag">#{{ $tag->name }}</a>
                         @endforeach
                     </div>
 

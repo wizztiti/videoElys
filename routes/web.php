@@ -37,7 +37,7 @@ Route::get('/blog/{category}/{post}', 'PostController@show')->name('blog.post');
 // Affichage liste des formations
 Route::get('/formation', 'FormationController@index')->name('formation.list');
 Route::get('/formation/category:{category}', 'FormationController@indexCategory')->name('formation.category.list');
-Route::get('/formation/tag:{tag}', 'FormationController@indexTag')->name('formation.tag.list');
+//Route::get('/formation/tag:{tag}', 'FormationController@indexTag')->name('formation.tag.list');
 
 // Affichage d'une formation
 Route::get('/formation/{category}/{formation}', 'FormationController@show')->name('formation.show');
@@ -45,6 +45,8 @@ Route::get('/formation/{category}/{formation}', 'FormationController@show')->nam
 // Affichage d'un chapitre de formation
 Route::get('/formation/{category}/{formation}/{chapter}', 'ChapterController@show')->name('chapter.show');
 
+//Affichage index blog & formation par tag
+Route::get('/tag:{tag}', 'TagController@indexTag')->name('tag.list');
 
 /*
 |--------------------------------------------------------------------------

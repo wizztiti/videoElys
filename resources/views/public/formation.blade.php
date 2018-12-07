@@ -17,7 +17,7 @@
 
                     <div class="tags">                                            <!--  foreach sur les tags -->
                         @foreach($formation->tags as $tag)
-                            <a href="{{ route('formation.tag.list', ['tag' => $tag->slug]) }}" class="tag">#{{ $tag->name }}</a>
+                            <a href="{{ route('tag.list', ['tag' => $tag->slug]) }}" class="tag">#{{ $tag->name }}</a>
                         @endforeach
                     </div>
 
