@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Formation;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -30,5 +31,9 @@ class User extends Authenticatable
 
     public function videos() {
         return $this->belongsToMany('App\Models\Video', 'videos_users');
+    }
+
+    public function formations() {
+        return $this->belongsTo(Formation::class);
     }
 }

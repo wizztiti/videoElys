@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Behaviours\Sluggable;
@@ -37,6 +38,10 @@ class Formation extends Model
 
     public function author() {
         return $this->hasOne('App\Models\Author');
+    }
+
+    public function users() {
+        return $this->belongsTo(User::class);
     }
 
 }
