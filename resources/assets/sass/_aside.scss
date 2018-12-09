@@ -1,0 +1,35 @@
+.aside {
+
+  .video {
+    background-color: $blue-clair;
+    padding: 2.5rem 1.8rem 1.8rem 1.5rem;
+    margin-bottom: 3rem;
+    font-size: .9rem;
+    color: $creme;
+
+    a {
+      color: #FFF;
+    }
+
+    .links {
+      div {
+        display: inline-block;
+      }
+
+      .love {
+        font-weight: bold;
+      }
+    }
+
+    .resume {
+      padding: 1rem 0;
+      line-height: 1.6rem;
+    }
+  }
+
+  .image {
+    img {
+      padding: 0 2rem;
+    }
+  }
+}

@@ -25,11 +25,6 @@
     <div id="app" class="main">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container-fluid">
-                @if(session()->has('notification'))
-                    <div class="alert alert-{{ session()->get('notification.type') }}">
-                        {{ session()->get('notification.message') }}
-                    </div>
-                @endif
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -96,6 +91,12 @@
         </nav>
 
         <main class="py-4 container-fluid">
+            @if(session()->has('notification'))
+                <div class="alert alert-{{ session()->get('notification.type') }}">
+                    {{ session()->get('notification.message') }}
+                </div>
+            @endif
+
             @yield('content')
         </main>
     </div>

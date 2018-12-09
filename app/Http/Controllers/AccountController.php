@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ResetsPasswords;
@@ -28,9 +28,9 @@ class AccountController extends Controller
         return view('userBoard.my-account', compact('user'));
     }
 
-    public function update(UserRequest $request) {
+    public function update(UserUpdateRequest $request) {
         $user = $this->auth->user();
-        $user->update([
+        $attributes = [
             'lastname' => request('lastname'),
             'firstname' => request('firstname'),
             'email' => request('email'),
@@ -40,7 +40,13 @@ class AccountController extends Controller
             'city' => request('city'),
             'country' => request('country'),
             'newsletter' => request('newsletter') ? true : false,
-        ]);
+        ];
+
+        if($user->update($attributes) < 1){
+            flash('Erreur lors de la mise à jour', 'warning');
+        } else {
+            flash('ok', 'success');
+        }
 
         return redirect(route('my-account'));
     }
