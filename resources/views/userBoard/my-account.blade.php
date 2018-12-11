@@ -130,27 +130,23 @@
                 <h2>Mis compras</h2>
 
                 <div class="buying">
-                    <div class="row item">
-                        <div class="col-md-4">
-                            <img src="/img/image-blue.jpg"class="img-fluid" alt="">
+                    @foreach($formations as $formation)
+                        <div class="row item">
+                            <div class="col-md-4">
+                                <img src="/img/image-blue.jpg"class="img-fluid" alt="">
+                            </div>
+                            <div class="col-md-8">
+                                <h3>{{ $formation->title }}</h3>
+                                <p>Comprado el {{ \Carbon\Carbon::parse($formation->pivot->bought_at)->format('d/m/y H:i') }} | <a href="">Descargar la factura</a></p>
+                                <a href="{{ route('formation.show', [
+                                        'category' => $formation->category->slug,
+                                        'formation' => $formation->slug
+                                        ]) }}"
+                                   class="btn btn-sm btn-moutarde">VER</a>
+                            </div>
                         </div>
-                        <div class="col-md-8">
-                            <h3>Les rabietes</h3>
-                            <p>Comprado el XX/XX/2018 | <a href="">Descargar la factura</a></p>
-                            <bouton class="btn btn-sm btn-moutarde">VER</bouton>
-                        </div>
-                    </div>
+                    @endforeach
 
-                    <div class="row item">
-                        <div class="col-md-4">
-                            <img src="/img/image-blue.jpg"class="img-fluid" alt="">
-                        </div>
-                        <div class="col-md-8">
-                            <h3>Les rabietes</h3>
-                            <p>Comprado el XX/XX/2018 | <a href="">Descargar la factura</a></p>
-                            <bouton class="btn btn-sm btn-moutarde">VER</bouton>
-                        </div>
-                    </div>
                 </div>
 
             </div>

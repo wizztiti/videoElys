@@ -41,6 +41,8 @@ Route::get('/formation/category:{category}', 'FormationController@indexCategory'
 
 // Affichage d'une formation
 Route::get('/formation/{category}/{formation}', 'FormationController@show')->name('formation.show');
+// Achat d'une formation
+Route::get('/formation/{category}/{formation}/purchase', 'FormationController@purchase')->name('formation.purchase');
 
 // Affichage d'un chapitre de formation
 Route::get('/formation/{category}/{formation}/{chapter}', 'ChapterController@show')->name('chapter.show');
@@ -76,4 +78,6 @@ Route::group([
     Route::post('my-account', 'AccountController@update')->name('account.update');
     Route::get('userBoard.passwordForm', 'AccountController@showFormPassword');
     Route::post('userBoard.passwordForm', 'AccountController@updatePassword');
+
+
 });

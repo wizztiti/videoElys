@@ -37,8 +37,12 @@
             </div>
             <div class="col-lg-4">
                 <section class="aside">
-
-                    <button type="button" class="btn btn-block btn-comprar">Comprar</button>
+                    <p class="price">Price : {{ $formation->price }}€</p>
+                    <a href="{{ route('formation.purchase', [
+                            'category' => $formation->category->slug,
+                            'formation' => $formation->slug,
+                            ]) }}"
+                       type="button" class="btn btn-block btn-comprar">Comprar</a>
 
                     <div class="sumary">
                         <h2>Sumary</h2>

@@ -34,6 +34,6 @@ class User extends Authenticatable
     }
 
     public function formations() {
-        return $this->belongsTo(Formation::class);
+        return $this->belongsToMany(Formation::class)->withPivot('bought_at');
     }
 }

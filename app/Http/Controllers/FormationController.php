@@ -5,11 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Formation;
 use App\Models\Category;
 use App\Models\Tag;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Contracts\Auth\Guard;
 
 
 class FormationController extends Controller
 {
+    private $auth;
+
+    public function __construct(Guard $auth)
+    {
+        $this->auth = $auth;
+    }
+
     /**
      * Display all resume formations.
      *
@@ -70,5 +78,26 @@ class FormationController extends Controller
             'tag' => $tag,
             'formations' => $formations,
         ]);
+    }
+
+    public function purchase($category, $slug) {
+
+        if(auth()->guest()) {
+            flash('Vous devez être connecté pour acheter une formation', 'warning');
+            return redirect(route('login'));
+        }
+
+        $user = $this->auth->user();
+        $formation = Formation::where('slug', $slug)->first();
+
+        // SI l'utiisateur n'a pas déjà cette formation alors elle est ajouté à son compte
+        if( !$user->formations()->where('formation_id', '=', $formation->id)->count() ){
+            $user->formations()->attach($formation, [
+                'bought_at' => Carbon::now(),
+            ]);
+            flash('Merci pour votre achat', 'success');
+            return back();
+        }
+
     }
 }

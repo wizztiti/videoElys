@@ -25,7 +25,8 @@ class AccountController extends Controller
     public function accueil()
     {
         $user = $this->auth->user();
-        return view('userBoard.my-account', compact('user'));
+        $formations = $user->formations;
+        return view('userBoard.my-account', compact('user', 'formations'));
     }
 
     public function update(UserUpdateRequest $request) {
