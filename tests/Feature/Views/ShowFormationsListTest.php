@@ -34,7 +34,8 @@ class ShowFormationsListTest extends TestCase
             'resume' => 'long résumé',
             'slug' => null,
             'category_id' => $this->category1->id,
-            'teaser_path' => 'https://youtube.com/dfsfsfgh'
+            'teaser_path' => 'https://youtube.com/dfsfsfgh',
+            'price' => 40,
         ]);
 
         $this->formation2 = Formation::create([
@@ -42,7 +43,8 @@ class ShowFormationsListTest extends TestCase
             'resume' => 'long résumé',
             'slug' => null,
             'category_id' => $this->category1->id,
-            'teaser_path' => 'https://youtube.com/hgfhza'
+            'teaser_path' => 'https://youtube.com/hgfhza',
+            'price' => 40,
         ]);
 
         $this->formation3 = Formation::create([
@@ -50,7 +52,8 @@ class ShowFormationsListTest extends TestCase
             'resume' => 'long résumé',
             'slug' => null,
             'category_id' => $this->category2->id,
-            'teaser_path' => 'https://youtube.com/oiyzkl'
+            'teaser_path' => 'https://youtube.com/oiyzkl',
+            'price' => 40,
         ]);
     }
 

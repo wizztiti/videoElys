@@ -10,6 +10,7 @@ $factory->define(Formation::class, function (Faker $faker) {
         'resume' => $faker->text,
         'slug' => $faker->slug,
         'teaser_path' => $faker->url,
+        'price' => 40,
         'category_id' => 1,
     ];
 });

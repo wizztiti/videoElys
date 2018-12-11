@@ -19,7 +19,8 @@ class Formation extends Model
         'resume',
         'category_id',
         'slug',
-        'teaser_path'
+        'teaser_path',
+        'price',
     ];
 
     protected $sluggable = 'title';
