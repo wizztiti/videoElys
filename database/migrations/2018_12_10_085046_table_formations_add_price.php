@@ -14,7 +14,7 @@ class TableFormationsAddPrice extends Migration
     public function up()
     {
         Schema::table('formations', function(Blueprint $table){
-            $table->decimal('price', 5, 2)->after('teaser_path');
+            $table->decimal('price', 5, 2)->after('teaser_path')->default(0);
         });
     }
 
