@@ -43,6 +43,7 @@ Route::get('/formation/category:{category}', 'FormationController@indexCategory'
 Route::get('/formation/{category}/{formation}', 'FormationController@show')->name('formation.show');
 // Achat d'une formation
 Route::get('/formation/{category}/{formation}/purchase', 'FormationController@purchase')->name('formation.purchase');
+Route::post('/formation/payment', 'FormationController@payment')->name('formation.payment');
 
 // Affichage d'un chapitre de formation
 Route::get('/formation/{category}/{formation}/{chapter}', 'ChapterController@show')->name('chapter.show');

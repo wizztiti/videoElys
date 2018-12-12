@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\StripeException;
 use App\Models\Formation;
 use App\Models\Category;
 use App\Models\Tag;
+use App\Stripe;
+use App\StripeFake;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Http\Request;
 
 
 class FormationController extends Controller
@@ -82,21 +86,52 @@ class FormationController extends Controller
 
     public function purchase($category, $slug) {
 
+        $user = $this->auth->user();
+        $formation = Formation::where('slug', $slug)->first();
+
         if(auth()->guest()) {
             flash('Vous devez être connecté pour acheter une formation', 'warning');
             return redirect(route('login'));
         }
 
-        $user = $this->auth->user();
-        $formation = Formation::where('slug', $slug)->first();
+        // SI l'utiisateur a pas déjà cette formation
+        if( $user->formations()->where('formation_id', '=', $formation->id)->count() ){
+            flash('Vous possédez déjà cette formation', 'warning');
+            return redirect()->back();
+        }
 
-        // SI l'utiisateur n'a pas déjà cette formation alors elle est ajouté à son compte
-        if( !$user->formations()->where('formation_id', '=', $formation->id)->count() ){
+        return view('public.formation-purchase', compact('category', 'formation'));
+    }
+
+    public function payment(Request $request) {
+        $user = $this->auth->user();
+        $request->validate([
+            'stripeToken' => ['required'],
+        ]);
+
+        $formation = Formation::where('id', $request->formationID)->first();
+
+        $stripe = app(StripeFake::class);
+        //$stripe = app(Stripe::class);
+        try {
+            $last4 = $stripe->charge('tok_visa', $formation->price * 100);
+            //$last4 = $stripe->charge($request->stripeToken, $formation->price * 100);
+
+            // Ajout Facture
+
+            // Ajout de la formation au compte de l'utilisateur
             $user->formations()->attach($formation, [
                 'bought_at' => Carbon::now(),
             ]);
+
             flash('Merci pour votre achat', 'success');
-            return back();
+            return redirect(route('formation.show', [
+                'category' => $formation->category->slug,
+                'formation' => $formation->slug,
+            ]));
+        } catch(StripeException $e) {
+            flash('Une erreur est survenue lors du paiement', 'warning');
+            return redirect()->back();
         }
 
     }

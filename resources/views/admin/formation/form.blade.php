@@ -122,13 +122,13 @@
         </div>
     </div>
 
-    <!--div class="form-group {{ $errors->has('tags') ? 'has-error' : '' }}">
-        <label class="control-label" for="tags">Tags</label>
+    <div class="form-group {{ $errors->has('price') ? 'has-error' : '' }}">
+        <label class="control-label" for="price">Prix</label>
         {!!
-            Form::text('tags', isset($formation) ? $formation->tagsList : null, ['class' => 'form-control', 'id' => 'tokenfield'])
+            Form::text('price', isset($formation) ? $formation->price : null, ['class' => 'form-control'])
         !!}
-        {!! $errors->first('tags', '<span class="help-block">:message</span>') !!}
-    </div-->
+        {!! $errors->first('price', '<span class="help-block">:message</span>') !!}
+    </div>
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Sauvegarder</button>

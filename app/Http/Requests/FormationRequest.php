@@ -27,7 +27,8 @@ class FormationRequest extends FormRequest
             'title' => 'required|min:3',
             'resume' => 'required|min:10',
             'category_id' => 'required|exists:categories,id',
-            'teaser_path' => 'required'
+            'teaser_path' => 'required',
+            'price' => 'required|numeric',
         ];
     }
 }

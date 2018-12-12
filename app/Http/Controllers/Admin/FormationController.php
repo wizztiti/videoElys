@@ -52,7 +52,8 @@ class FormationController extends Controller
                 'resume',
                 'slug',
                 'category_id',
-                'teaser_path'
+                'teaser_path',
+                'price'
             ));
 
             //$post->saveTags($request->get('tags'));
@@ -114,7 +115,8 @@ class FormationController extends Controller
                 'resume',
                 'slug',
                 'category_id',
-                'teaser_path'
+                'teaser_path',
+                'price'
             ));
             $formation->saveTags($request->get('tags'));
 

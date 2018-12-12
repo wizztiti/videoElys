@@ -9,7 +9,8 @@ class Stripe
 {
     public function charge($token, $amount)
     {
-        \Stripe\Stripe::setApiKey("sk_test_7ff4ZlVLtLdhi9lvT8oYfQR7");
+
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
 
         try {
             $charge = \Stripe\Charge::create([
