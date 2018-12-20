@@ -18,7 +18,6 @@
                             Form::text('firstname', $user->firstname , [
                                 'class' => 'form-control',
                                 'placeholder' => 'Nombre',
-                                'required' => 'required',
                             ])
                         !!}
                         {!! $errors->first('firstname', '<span class="help-block">:message</span>') !!}
@@ -29,7 +28,6 @@
                             Form::text('lastname', $user->lastname, [
                                 'class' => 'form-control',
                                 'placeholder' => 'Apellido',
-                                'required' => 'required',
                             ])
                         !!}
                         {!! $errors->first('lastname', '<span class="help-block">:message</span>') !!}
@@ -71,7 +69,6 @@
                             Form::text('address', $user->address, [
                                 'class' => 'form-control',
                                 'placeholder' => 'Direcion',
-                                'required' => 'required',
                             ])
                         !!}
                         {!! $errors->first('address', '<span class="help-block">:message</span>') !!}
@@ -83,7 +80,6 @@
                                 Form::number('postal_code', $user->postal_code, [
                                     'class' => 'form-control',
                                     'placeholder' => 'Codigo postal',
-                                    'required' => 'required',
                                 ])
                             !!}
                             {!! $errors->first('postal_code', '<span class="help-block">:message</span>') !!}
@@ -94,7 +90,6 @@
                                 Form::text('city', $user->city, [
                                     'class' => 'form-control',
                                     'placeholder' => 'Ciudad',
-                                    'required' => 'required',
                                 ])
                             !!}
                             {!! $errors->first('city', '<span class="help-block">:message</span>') !!}
@@ -107,7 +102,6 @@
                             Form::text('country', $user->country, [
                                 'class' => 'form-control',
                                 'placeholder' => 'Pais',
-                                'required' => 'required',
                             ])
                         !!}
                         {!! $errors->first('country', '<span class="help-block">:message</span>') !!}

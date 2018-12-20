@@ -32,21 +32,21 @@ class AccountController extends Controller
     public function update(UserUpdateRequest $request) {
         $user = $this->auth->user();
         $attributes = [
-            'lastname' => request('lastname'),
-            'firstname' => request('firstname'),
-            'email' => request('email'),
-            'password' => Hash::make(request('password')),
-            'address' => request('address'),
-            'postal_code' => request('postal_code'),
-            'city' => request('city'),
-            'country' => request('country'),
-            'newsletter' => request('newsletter') ? true : false,
+            'lastname' => $request->lastname,
+            'firstname' => $request->firstname,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'address' => $request->address,
+            'postal_code' => $request->postal_code,
+            'city' => $request->city,
+            'country' => $request->country,
+            'newsletter' => $request->newsletter ? true : false,
         ];
 
         if($user->update($attributes) < 1){
             flash('Erreur lors de la mise à jour', 'warning');
         } else {
-            flash('ok', 'success');
+            flash('Données modifiées', 'success');
         }
 
         return redirect(route('my-account'));

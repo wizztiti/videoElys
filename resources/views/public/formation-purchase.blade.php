@@ -4,11 +4,81 @@
     <div class="formation-purchase">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">Buy formation : {{ $formation->title }}</div>
-                    <div class="card-body">
-                        <form action="{{ route('formation.payment') }}" method="post" id="payment-form">
-                            @csrf
+                <form action="{{ route('formation.payment') }}" method="post" id="payment-form">
+                    @csrf
+                    <div class="card">
+                        <div class="card-header">Adresse facturation</div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    {!!
+                                        Form::text('firstname', $user->firstname , [
+                                            'class' => 'form-control',
+                                            'placeholder' => 'Nombre',
+                                        ])
+                                    !!}
+                                    {!! $errors->first('firstname', '<span class="help-block">:message</span>') !!}
+                                </div>
+
+                                <div class="form-group">
+                                    {!!
+                                        Form::text('lastname', $user->lastname, [
+                                            'class' => 'form-control',
+                                            'placeholder' => 'Apellido',
+                                        ])
+                                    !!}
+                                    {!! $errors->first('lastname', '<span class="help-block">:message</span>') !!}
+                                </div>
+
+                                <div class="form-group">
+                                    {!!
+                                        Form::text('address', $user->address, [
+                                            'class' => 'form-control',
+                                            'placeholder' => 'Direcion',
+                                        ])
+                                    !!}
+                                    {!! $errors->first('address', '<span class="help-block">:message</span>') !!}
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        {!!
+                                            Form::number('postal_code', $user->postal_code, [
+                                                'class' => 'form-control',
+                                                'placeholder' => 'Codigo postal',
+                                            ])
+                                        !!}
+                                        {!! $errors->first('postal_code', '<span class="help-block">:message</span>') !!}
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        {!!
+                                            Form::text('city', $user->city, [
+                                                'class' => 'form-control',
+                                                'placeholder' => 'Ciudad',
+                                            ])
+                                        !!}
+                                        {!! $errors->first('city', '<span class="help-block">:message</span>') !!}
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    {!!
+                                        Form::text('country', $user->country, [
+                                            'class' => 'form-control',
+                                            'placeholder' => 'Pais',
+                                        ])
+                                    !!}
+                                    {!! $errors->first('country', '<span class="help-block">:message</span>') !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card">
+                        <div class="card-header">Buy formation : {{ $formation->title }}</div>
+                        <div class="card-body">
                             <input type="hidden" name="formationID" value="{{ $formation->id }}">
                             <div class="form-group">
                                 <label for="card-element">
@@ -23,9 +93,9 @@
                             </div>
 
                             <button class="btn btn-moutarde" type="submit">Pay €{{ $formation->price }} </button>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

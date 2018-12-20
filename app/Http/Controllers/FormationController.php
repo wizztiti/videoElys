@@ -100,12 +100,18 @@ class FormationController extends Controller
             return redirect()->back();
         }
 
-        return view('public.formation-purchase', compact('category', 'formation'));
+        return view('public.formation-purchase', compact('category', 'formation', 'user'));
     }
 
     public function payment(Request $request) {
         $user = $this->auth->user();
         $request->validate([
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'address' => 'required|string',
+            'postal_code' => 'required|string',
+            'city' => 'required|string',
+            'country' => 'required|string',
             'stripeToken' => ['required'],
         ]);
 
@@ -116,6 +122,16 @@ class FormationController extends Controller
         try {
             $last4 = $stripe->charge('tok_visa', $formation->price * 100);
             //$last4 = $stripe->charge($request->stripeToken, $formation->price * 100);
+
+            // Ajout ou modification adresse utilisateur
+            $attributes = [
+                'lastname' => $request->lastname,
+                'firstname' => $request->firstname,
+                'address' => $request->address,
+                'postal_code' => $request->postal_code,
+                'city' => $request->city,
+                'country' => $request->country,
+            ];
 
             // Ajout Facture
 
