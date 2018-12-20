@@ -55,7 +55,7 @@ class FormationController extends Controller
                 'teaser_path',
                 'price'
             ));
-
+            $formation->saveTags($request->get('tags'));
             //$post->saveTags($request->get('tags'));
 
             if($formation) {
